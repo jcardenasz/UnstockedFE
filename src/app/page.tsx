@@ -1,5 +1,4 @@
 import React from 'react'
-
 /**
  * Esta es la pantalla de inicio
  * @returns {JSX.Element}: The JSX Code for home page.
