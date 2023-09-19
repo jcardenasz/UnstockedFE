@@ -11,7 +11,7 @@ export default function LogInForm(): JSX.Element{
                 <input type="text" placeholder="Username" />
                 <input type="password" placeholder="Password" />
                 <button>Sign In</button>
-                <span><a href="#">Forgot your password?</a></span>
+                <span><a style={{fontSize:'12px'}} href="#">Forgot your password?</a></span>
                 <span>or use your account</span>
                 <SocialIcons/>
             </form>
