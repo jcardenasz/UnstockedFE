@@ -161,9 +161,6 @@ input {
 }
 
 .overlay {
-    background: #FF416C;
-    background: -webkit-linear-gradient(to right, #743EE5, #ff41e6);
-    background: linear-gradient(to right, #743EE5, #ff41e6);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -196,7 +193,11 @@ input {
 }
 
 .overlay-left {
-    transform: translateX(-20%);
+    transform: translateX(-100%);
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    background: -webkit-linear-gradient(to right, #743EE5, #ff41e6);
+    background: linear-gradient(to right, #743EE5, #ff41e6);
 }
 
 .container.right-panel-active .overlay-left {
@@ -206,8 +207,12 @@ input {
 .overlay-right {
     right: 0;
     transform: translateX(0);
+    border-top-left-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+    background: -webkit-linear-gradient(to right, #743EE5, #ff41e6);
+    background: linear-gradient(to right, #743EE5, #ff41e6);
 }
 
 .container.right-panel-active .overlay-right {
-    transform: translateX(20%);
+    transform: translateX(100%);
 }
