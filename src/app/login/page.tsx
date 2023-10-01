@@ -3,16 +3,11 @@
 import React from 'react'
 import { FaGoogle, FaRegEnvelope } from 'react-icons/fa'
 import { MdLockOutline } from 'react-icons/md'
+import { fetchUser } from '@/Services/login.service'
 
 const user = {
     email: '',
     password: ''
-}
-async function fetchUser(user:any): Promise<any> {
-    const res = await fetch('http://localhost:4000/api/login', {method: 'POST', body: JSON.stringify(user), headers: {'Content-Type': 'application/json'}})
-    const data = await res.json()
-    console.log(data)
-    return data
 }
 export default function Page(): JSX.Element {
     return (
@@ -42,7 +37,7 @@ export default function Page(): JSX.Element {
                                     </a>
                                 </div>
                                 <p className="text-gray-400 my-3">
-                                    o utiliza tu correo elecronico.
+                                    o utiliza tu correo electrónico.
                                 </p>
                                 <div className="flex flex-col items-center">
                                     <div className="bg-gray-100 w-64 p-2 flex items-center mb-3 rounded-2xl">
@@ -83,7 +78,7 @@ export default function Page(): JSX.Element {
                                             Recordarme
                                         </label>
                                         <a href="#" className="text-xs">
-                                            Olvide mi contraseña
+                                            Olvidé mi contraseña
                                         </a>
                                     </div>
                                     <button
@@ -91,7 +86,7 @@ export default function Page(): JSX.Element {
                                         // eslint-disable-next-line @typescript-eslint/no-misused-promises
                                         onClick={async () => {
                                             try {
-                                                await fetchUser(user)
+                                                await fetchUser(user,'login')
                                             } catch (e) {
                                                 console.error(e)
                                             }

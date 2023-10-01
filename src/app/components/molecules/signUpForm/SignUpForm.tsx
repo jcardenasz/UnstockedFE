@@ -1,16 +1,28 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+'use client'
 import React from 'react'
 import SocialIcons from '@/app/components/atoms/socialIcons/SocialIcons'
 import UnStockedLogo from '@/app/components/atoms/unstockedLogo/UnStockedLogo'
+import { fetchUser } from '@/Services/login.service' 
 
 export default function SignUpForm(): JSX.Element{
+    const [ username, setUsername ] = React.useState('')
+    const [ email, setEmail ] = React.useState('')
+    const [ password, setPassword ] = React.useState('')
     return(
         <div className="form-container sign-up-container">
-            <form action="#">
+            <form action="#" onSubmit={async () =>await fetchUser({
+                username,
+                email,
+                password
+                },
+                'register'
+            )}>
                 <UnStockedLogo />
                 <h1>Create Account</h1>
-                <input type="text" placeholder="Username" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="text" placeholder="Username" value={username} onChange={(e) => { setUsername(e.target.value); }}/>
+                <input type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }} />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }}/>
                 <button>Sign Up</button>
                 <span>or use your social media for registration</span>
                 <SocialIcons/>
