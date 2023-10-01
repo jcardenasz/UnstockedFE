@@ -1,0 +1,20 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.2);
+}
+
+.nav svg {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.nav svg:hover {
+    color: #743ee5;
+}
+
+.s1 {
+    padding: 25px;
+}
