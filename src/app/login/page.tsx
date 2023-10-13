@@ -4,6 +4,16 @@ import React from 'react'
 import { FaGoogle, FaRegEnvelope } from 'react-icons/fa'
 import { MdLockOutline } from 'react-icons/md'
 
+const user = {
+    email: '',
+    password: ''
+}
+async function fetchUser(user:any): Promise<any> {
+    const res = await fetch('http://localhost:4000/api/login', {method: 'POST', body: JSON.stringify(user), headers: {'Content-Type': 'application/json'}})
+    const data = await res.json()
+    console.log(data)
+    return data
+}
 export default function Page(): JSX.Element {
     return (
         <>
@@ -42,6 +52,11 @@ export default function Page(): JSX.Element {
                                             name="email"
                                             placeholder="Email"
                                             className="bg-gray-100 outline-none text-sm flex-1"
+                                            onChange={(e) => {
+                                                user.email = e.target.value
+                                                console.log(e.target.value)
+                                            }
+                                        }
                                         />
                                     </div>
                                     <div className="bg-gray-100 w-64 p-2 flex items-center rounded-2xl">
@@ -51,6 +66,11 @@ export default function Page(): JSX.Element {
                                             name="password"
                                             placeholder="Password"
                                             className="bg-gray-100 outline-none text-sm flex-1"
+                                            onChange={(e) => {
+                                                user.password = e.target.value
+                                                console.log(e.target.value)
+                                            }
+                                        }
                                         />
                                     </div>
                                     <div className="flex justify-between w-64 m-4">
@@ -66,7 +86,17 @@ export default function Page(): JSX.Element {
                                             Olvide mi contraseña
                                         </a>
                                     </div>
-                                    <button className="border-2 border-purple-600 rounded-full px-12 py-2 inline-block font-semibold hover:text-white hover:bg-purple-600">
+                                    <button
+                                        className="border-2 border-purple-600 rounded-full px-12 py-2 inline-block font-semibold hover:text-white hover:bg-purple-600"
+                                        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                                        onClick={async () => {
+                                            try {
+                                                await fetchUser(user)
+                                            } catch (e) {
+                                                console.error(e)
+                                            }
+                                        }}
+                                    >
                                         Iniciar Sesión
                                     </button>
                                 </div>
