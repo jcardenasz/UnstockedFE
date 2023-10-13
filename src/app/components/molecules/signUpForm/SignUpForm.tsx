@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client'
-import React from 'react'
+import React, {useState} from 'react'
 import SocialIcons from '@/app/components/atoms/socialIcons/SocialIcons'
 import UnStockedLogo from '@/app/components/atoms/unstockedLogo/UnStockedLogo'
 import { fetchUser } from '@/Services/login.service' 
 
 export default function SignUpForm(): JSX.Element{
-    const [ username, setUsername ] = React.useState('')
-    const [ email, setEmail ] = React.useState('')
-    const [ password, setPassword ] = React.useState('')
+    const [ username, setUsername ] = useState('')
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('')
     return(
         <div className="form-container sign-up-container">
             <form action="#" onSubmit={async () =>await fetchUser({
