@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import styles from './overlay.module.css'
 
 export default function OverlayRight(): JSX.Element{
     function handleClick(): void{
@@ -9,8 +10,8 @@ export default function OverlayRight(): JSX.Element{
     return(
         <div className="overlay-panel overlay-right">
             <h1>Hello, Friend!</h1>
-            <p>Enter your personal details and start your journey with us</p>
-            <button onClick={handleClick} className="ghost" id="signUp">Sign Up</button>
+            <p className={styles.overlayP}>Enter your personal details and start your journey with us</p>
+            <button onClick={handleClick} className={styles.buttonOverlay} id="signUp">Sign Up</button>
         </div>
     )
 }

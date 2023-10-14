@@ -3,7 +3,8 @@
 import React, {useState} from 'react'
 import SocialIcons from '@/app/components/atoms/socialIcons/SocialIcons'
 import UnStockedLogo from '@/app/components/atoms/unstockedLogo/UnStockedLogo'
-import { fetchUser } from '@/Services/login.service' 
+import { fetchUser } from '@/services/login.service'
+import styles from './signUpForm.module.css'
 
 export default function SignUpForm(): JSX.Element{
     const [ username, setUsername ] = useState('')
@@ -11,7 +12,7 @@ export default function SignUpForm(): JSX.Element{
     const [ password, setPassword ] = useState('')
     return(
         <div className="form-container sign-up-container">
-            <form action="#" onSubmit={async () =>await fetchUser({
+            <form className={styles.signUpForm} action="#" onSubmit={async () =>await fetchUser({
                 username,
                 email,
                 password
@@ -19,12 +20,12 @@ export default function SignUpForm(): JSX.Element{
                 'register'
             )}>
                 <UnStockedLogo />
-                <h1>Create Account</h1>
-                <input type="text" placeholder="Username" value={username} onChange={(e) => { setUsername(e.target.value); }}/>
-                <input type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }} />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }}/>
-                <button>Sign Up</button>
-                <span>or use your social media for registration</span>
+                <h1 className={styles.signUpFormTitle}>Create Account</h1>
+                <input id="usernameInputSignUpForm" className={styles.signUpFormInput} type="text" placeholder="Username" value={username} onChange={(e) => { setUsername(e.target.value); }}/>
+                <input id="emailInputSignUpForm" className={styles.signUpFormInput} type="email" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }} />
+                <input id="passwordInputSignUpForm" className={styles.signUpFormInput} type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }}/>
+                <button className={styles.signUpFormButton}>Sign Up</button>
+                <span className={styles.signUpFormSpan}>or use your social media for registration</span>
                 <SocialIcons/>
             </form>
         </div>

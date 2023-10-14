@@ -6,10 +6,12 @@ import './authentication.css'
 
 export default function Authentication(): JSX.Element{
     return (
-        <div className="container" id="container">
-            <SignUpForm/>
-            <LogInForm/>
-            <Overlay/>
+        <div className="falseBody">
+            <div className="container" id="container">
+                <SignUpForm/>
+                <LogInForm/>
+                <Overlay/>
+            </div>
         </div>
     )
 }
