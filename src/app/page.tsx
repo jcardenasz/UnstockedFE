@@ -23,11 +23,11 @@ export default function Home(): JSX.Element {
                         Management
                     </h1>
                     <p className={styles.description}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Quisque mattis egestas nibh, vitae pretium metus ornare
-                        vitae. Integer est urna, feugiat nec varius a, aliquet a
-                        velit. Maecenas nec enim facilisis, scelerisque nisl ut,
-                        semper nulla. Donec vel mollis metus.
+                        UNStocked is a platform aimed to people who is searching
+                        the best tool available for improving their management of
+                        any kind of inventories. We provide a set of tools designed
+                        to optimize your time so you can focus on important problems
+                        while we focus on taking care of your inventory.
                     </p>
                     <Link className={styles.button} href="/authentication">Start Now!</Link>
                 </div>
