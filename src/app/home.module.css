@@ -16,6 +16,10 @@
 }
 
 .button{
+    display: block;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 20px;
     margin-left: 40px;
     color: #ffffff;
     border: 1px solid #743EE5;

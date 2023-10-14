@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
                         velit. Maecenas nec enim facilisis, scelerisque nisl ut,
                         semper nulla. Donec vel mollis metus.
                     </p>
-                    <Link className={styles.button} href="/authentication">Get Started</Link>
+                    <Link className={styles.button} href="/authentication">Start Now!</Link>
                 </div>
                 <div className={styles.rightSection}>
                     <Image src={image}  alt="ManagementImage" width={500} height={500}/>

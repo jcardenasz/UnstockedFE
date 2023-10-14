@@ -11,7 +11,7 @@ export default function UnStockedLogo(props: { textColor?: string }): JSX.Elemen
                 >
                     UN
                 </span>
-                stocked
+                Stocked
             </div>
         </Link>
     )
