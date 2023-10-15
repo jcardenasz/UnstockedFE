@@ -14,7 +14,7 @@ export default function Home(): JSX.Element {
     return (
         <>
             <LandingNavbar />
-            <div className={styles.container}>
+            <div className={`${styles.container} md:flex`}>
                 <div className={styles.leftSection}>
                     <h1 className={styles.title}>
                         Inventory
@@ -31,8 +31,14 @@ export default function Home(): JSX.Element {
                     </p>
                     <Link className={styles.button} href="/authentication">Start Now!</Link>
                 </div>
-                <div className={styles.rightSection}>
-                    <Image src={image}  alt="ManagementImage" width={500} height={500}/>
+                <div className={`${styles.rightSection}`}>
+                    <Image
+                        title="Manage your inventory"
+                        src={image}
+                        alt="Animated image of people managing their inventories"
+                        width={500}
+                        height={500}
+                    />
                 </div>
             </div>
         </>
