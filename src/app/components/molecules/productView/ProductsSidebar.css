@@ -1,0 +1,7 @@
+.products {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 30px;
+    margin: 30px;
+}
