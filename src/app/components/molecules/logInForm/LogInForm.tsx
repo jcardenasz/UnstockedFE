@@ -1,3 +1,4 @@
+
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client'
 import React , {useState} from 'react'
@@ -18,6 +19,7 @@ export default function LogInForm(): JSX.Element{
             )}>
                 <UnStockedLogo />
                 <h1>Sign in</h1>
+
                 <input type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }} />
                 <input type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }} />
                 <button>Sign In</button>
@@ -28,3 +30,4 @@ export default function LogInForm(): JSX.Element{
         </div>
     )
 } // react hook form
+

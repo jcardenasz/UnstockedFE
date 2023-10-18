@@ -25,7 +25,7 @@ export default function SignUpForm(): JSX.Element{
                 <input type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }}/>
                 <button>Sign Up</button>
                 <span>or use your social media for registration</span>
-                <SocialIcons/>
+                <SocialIcons />
             </form>
         </div>
     )

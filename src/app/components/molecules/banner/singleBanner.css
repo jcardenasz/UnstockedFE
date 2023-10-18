@@ -1,0 +1,22 @@
+.singleBanner {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    overflow: hidden;
+    background-color: #a282e6;
+}
+
+.singleBanner .bannerheading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.singleBanner .bannerheading h1 {
+    color: aliceblue;
+    font: bold;
+    font-size: 65px;
+    font-weight: 100;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
