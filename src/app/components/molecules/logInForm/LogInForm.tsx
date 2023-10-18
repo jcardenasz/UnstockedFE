@@ -19,7 +19,7 @@ export default function LogInForm(): JSX.Element{
             )}>
                 <UnStockedLogo />
                 <h1 className={styles.logInFormTitle}>Sign in</h1>
-                <input id="emailInputSignInForm" className={styles.logInFormInput} type="email" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }} />
+                <input id="emailInputSignInForm" className={styles.logInFormInput} type="text" placeholder="Username" value={email} onChange={(e) => { setEmail(e.target.value); }} />
                 <input id="passwordInputSignInForm" className={styles.logInFormInput} type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }} />
                 <button className={styles.logInFormButton}>Sign In</button>
                 <span className={styles.logInFormSpan}><a style={{fontSize:'12px', color: '#00a4fc'}} href="#">Forgot your password?</a></span>
