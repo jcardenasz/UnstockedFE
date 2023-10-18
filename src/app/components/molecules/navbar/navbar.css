@@ -1,0 +1,52 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    padding: 1px;
+    box-shadow: 10px 10px 10px 10px rgb(0, 0, 0, 0.5);
+    background-color: #743ee5;
+}
+
+nav svg:hover {
+    color: #ffffff;
+}
+
+nav .s1 {
+    width: 100%;
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .userclick {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+nav .searchclick {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+nav .searchbar {
+    display: flex;
+    border: none;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.2);
+    border: 4px;
+    border-radius: 5px;
+    padding: 5px;
+    overflow: hidden;
+    justify-content: space-between;
+    width: 50%;
+}
+
+nav .searchbar input {
+    border: none;
+    outline: none;
+}
+
+nav .search {
+    width: 1000px;
+}
