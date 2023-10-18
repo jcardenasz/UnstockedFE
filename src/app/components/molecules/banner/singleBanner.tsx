@@ -1,7 +1,7 @@
 import React from 'react'
 import './singleBanner.css'
 
-const SingleBanner = ({ heading }) => {
+const SingleBanner = ({ heading }:{heading:any}):JSX.Element => {
     return (
         <div className="singleBanner">
             <div className="bannerheading">
