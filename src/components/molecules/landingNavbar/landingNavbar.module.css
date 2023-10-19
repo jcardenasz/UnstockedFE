@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px;
+    padding-left:30px;
     height: 72px;
     max-height: 72px;
     width: 100%;
@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 0 30px;
+    padding: 0 10px;
     height: 72px;
     width: 100%;
     z-index: 99;
@@ -38,7 +38,7 @@
     background: #ffffff;
 }
 .nav ul li{
-    margin-left: 40px;
+    margin-left: 20px;
     font-size: 18px;
     font-weight: bolder;
     color: #737070;

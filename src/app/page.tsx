@@ -1,9 +1,12 @@
+'use client'
 import React from 'react'
 import LandingNavbar from '../components/molecules/landingNavbar/LandingNavbar'
 import Image from 'next/image'
 import image from '../assets/landingPage.jpg'
 import styles from './home.module.css'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+// import { useRouter } from 'next/navigation'
 
 /**
  * Esta es la pantalla de inicio
@@ -11,6 +14,11 @@ import Link from 'next/link'
  */
 
 export default function Home(): JSX.Element {
+    const {data: session, status} = useSession();
+    // const router = useRouter();
+
+    console.log({session, status});
+    
     return (
         <>
             <LandingNavbar />

@@ -40,7 +40,7 @@ export default function SignUpForm(): JSX.Element{
             void Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: responseAPI.message
+                text: 'Something went wrong'
             })
             return;
         }
@@ -55,11 +55,15 @@ export default function SignUpForm(): JSX.Element{
             void Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: responseAPI.message
+                text: 'Something went wrong'
             })
             return;
         }
-
+        void Swal.fire({
+            icon: 'success',
+            title: 'Congratulations',
+            text: 'User created successfully'
+        })
         router.push("/");
     };
     return(
