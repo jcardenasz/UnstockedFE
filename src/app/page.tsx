@@ -1,5 +1,5 @@
 import React from 'react'
-import LandingNavbar from './components/molecules/landingNavbar/LandingNavbar'
+import LandingNavbar from '../components/molecules/landingNavbar/LandingNavbar'
 import Image from 'next/image'
 import image from '../assets/landingPage.jpg'
 import styles from './home.module.css'

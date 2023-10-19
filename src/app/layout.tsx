@@ -1,3 +1,4 @@
+import SessionAuthProvider from '@/context/SessionAuthProvider'
 import './globals.css'
 import type { Metadata } from 'next'
 import React from 'react'
@@ -24,7 +25,9 @@ export default function RootLayout({
                 <meta charSet="utf-8" />
             </head>
             <body>
-                {children}
+                <SessionAuthProvider>
+                    {children}
+                </SessionAuthProvider>
             </body>
         </html>
     )
