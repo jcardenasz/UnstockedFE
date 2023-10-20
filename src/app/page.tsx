@@ -7,7 +7,7 @@ import styles from './home.module.css'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 // import { useRouter } from 'next/navigation'
-
+import Footer from '../components/molecules/footer/Footer'
 /**
  * Esta es la pantalla de inicio
  * @returns {JSX.Element}: The JSX Code for home page.
@@ -49,6 +49,7 @@ export default function Home(): JSX.Element {
                     />
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
