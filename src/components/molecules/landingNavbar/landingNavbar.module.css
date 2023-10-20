@@ -1,0 +1,76 @@
+.container{
+    text-wrap: nowrap;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left:30px;
+    height: 72px;
+    max-height: 72px;
+    width: 100%;
+    z-index: 99;
+    background: #ffffff;
+}
+.nav {
+    text-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 10px;
+    height: 72px;
+    width: 100%;
+    z-index: 99;
+    background: #ffffff;
+}
+.nav ul{
+    display: flex;
+    align-items: center;
+}
+.nav ul li:last-child{
+    color: #ffffff;
+    border: 2px solid #743EE5;
+    background: #743EE5;
+    padding: 5px 15px;
+    border-radius: 50px;
+}
+.nav ul li:last-child:hover{
+    color: #743EE5;
+    background: #ffffff;
+}
+.nav ul li{
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: bolder;
+    color: #737070;
+    transition: 0.5s;
+}
+.nav ul li:hover{
+    color: rgba(147, 51, 234);
+}
+
+.active{
+    display: flex;
+}
+
+@media (max-width: 768px) { /* Adjust the max-width value to your desired medium screen breakpoint */
+    .nav{
+        position: fixed;
+        justify-content: center;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        height: fit-content;
+        display: none;
+    }
+
+    .active{
+        display: flex;
+    }
+
+    .nav ul{
+       flex-direction: column;
+    }
+    .nav ul li{
+        margin: 0;
+    }
+}
