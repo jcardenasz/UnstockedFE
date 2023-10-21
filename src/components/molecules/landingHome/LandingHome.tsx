@@ -6,8 +6,14 @@ import image from '../../../assets/landingPage.jpg'
 import styles from './landingHome.module.css'
 import Link from 'next/link'
 import Footer from '../footer/Footer'
+import { useSession } from 'next-auth/react'
 
 function LandingHome(): React.JSX.Element {
+
+    const {status} = useSession();
+    const buttonText = status === 'authenticated' ? 'Dashboard':'Start Now!';
+    const buttonHref = status === 'authenticated' ? '/dashboard':'/authentication';
+
     return (
         <>
             <LandingNavbar />
@@ -26,7 +32,7 @@ function LandingHome(): React.JSX.Element {
                         to optimize your time so you can focus on important problems
                         while we focus on taking care of your inventory.
                     </p>
-                    <Link className={styles.button} href="/authentication">Start Now!</Link>
+                    <Link className={styles.button} href={buttonHref}>{buttonText}</Link>
                 </div>
                 <div className={`${styles.rightSection}`}>
                     <Image

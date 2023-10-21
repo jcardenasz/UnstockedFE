@@ -3,37 +3,37 @@
 import React , {useState} from 'react'
 import SocialIcons from '@/components/atoms/socialIcons/SocialIcons'
 import UnStockedLogo from '@/components/atoms/unstockedLogo/UnStockedLogo'
-import Swal from 'sweetalert2'
 
 import styles from './logInForm.module.css'
-import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+
+import { loginUser } from '@/services/login.service'
+import Swal from 'sweetalert2'
 
 export default function LogInForm(): JSX.Element{
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const router = useRouter();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
 
     const handleSubmit = async(event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-
-        const responseNextAuth = await signIn("credentials", {
-            email,
-            password,
-            redirect: false
-        })
-
-        if ((responseNextAuth?.error) != null) {
-            void Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Wrong Email or Password!'
+        const res = await loginUser(email , password);
+        if ((res).ok){
+            void Toast.fire({
+                icon:'success',
+                title: 'Signed in successfully'
             })
-            return
         }
-        router.push("/");
     }
 
     return(
@@ -63,4 +63,4 @@ export default function LogInForm(): JSX.Element{
             </form>
         </div>
     )
-} // react hook form
+}

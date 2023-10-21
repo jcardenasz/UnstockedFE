@@ -9,7 +9,7 @@ import { signOut, useSession } from 'next-auth/react'
 function LandingNavbar(): React.JSX.Element {
     
     const [showDropdown, setShowDropDown] = useState(false);
-    const {data: session, status} = useSession();
+    const {status} = useSession();
 
     return (
         <header className={styles.container}>

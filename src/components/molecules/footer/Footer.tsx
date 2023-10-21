@@ -24,17 +24,15 @@ function Footer(): React.JSX.Element {
                 </FooterList>
                 <div className="w-full md:w-1/3">
                     <h3 className="text-base font-bold mb-2">
-                        Acerca de nosotros:
+                        About us:
                     </h3>
                     <p className="mb-2">
-                        UNStocked is a platform aimed to people who is searching
-                        the best tool available for improving their management of
-                        any kind of inventories. We provide a set of tools designed
-                        to optimize your time so you can focus on important problems
-                        while we focus on taking care of your inventory.
+                        We are a group of students of National University of Colombia
+                        that are trying to provide a service for keeping a good management
+                        of any kind of inventories.
                     </p>
                     <p>
-                        &copy; {new Date().getFullYear()} Derechos reservados
+                        &copy; {new Date().getFullYear()} UNStocked | All rights Reserved
                     </p>
                 </div>
                 <div className='socialMedia'>
