@@ -9,7 +9,7 @@ function Footer(): React.JSX.Element {
     return (
         <footer className="footer">
             <div className="items">
-                <div className="mr-6 mt-10">
+                <div className="mr-6">
                     <UnStockedLogo />
                 </div>
                 <FooterList>
@@ -19,29 +19,28 @@ function Footer(): React.JSX.Element {
                     <Link href="#">Productos</Link>
                     <Link href="#">Perfil</Link>
                     <Link href="#">Contactenos</Link>
-                    <Link href="#">Politica de ###</Link>
+                    <Link href="#">Politica de Privacidad</Link>
                     <Link href="#">FAQ</Link>
                 </FooterList>
-                <div className="w-full md:w-1/3 mb-6">
+                <div className="w-full md:w-1/3">
                     <h3 className="text-base font-bold mb-2">
                         Acerca de nosotros:
                     </h3>
                     <p className="mb-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Quisque mattis egestas nibh, vitae pretium metus ornare
-                        vitae. Integer est urna, feugiat nec varius a, aliquet a
-                        velit. Maecenas nec enim facilisis, scelerisque nisl ut,
-                        semper nulla. Donec vel mollis metus.
+                        UNStocked is a platform aimed to people who is searching
+                        the best tool available for improving their management of
+                        any kind of inventories. We provide a set of tools designed
+                        to optimize your time so you can focus on important problems
+                        while we focus on taking care of your inventory.
                     </p>
                     <p>
                         &copy; {new Date().getFullYear()} Derechos reservados
-                        jasjas
                     </p>
                 </div>
-                <FooterList>
+                <div className='socialMedia'>
                     <h3 className="text-base font-bold mb-2">Redes:</h3>
                     <SocialIcons />
-                </FooterList>
+                </div>
             </div>
         </footer>
     )

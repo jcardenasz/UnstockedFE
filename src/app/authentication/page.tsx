@@ -5,18 +5,18 @@ import SignUpForm from '@/components/molecules/signUpForm/SignUpForm'
 import Overlay from '@/components/molecules/overlay/Overlay'
 import {useSession} from "next-auth/react"
 import './authentication.css'
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function Authentication(): JSX.Element{
 
     const {data: session, status} = useSession();
-    // const router = useRouter();
+    const router = useRouter();
 
     console.log({session, status});
 
-    // if(status === 'authenticated'){
-      //  router.push("/")
-    // }
+    if(status === 'authenticated'){
+        router.push("/")
+    }
 
     return (
         <div className="falseBody">

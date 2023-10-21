@@ -1,20 +1,14 @@
 .footerList {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     width: 100%;
-}
-
-@media (min-width: 640px) {
-    .footerList {
-        width: 50%;
-    }
 }
 
 @media (min-width: 768px) {
     .footerList {
-        width: 25%;
+        width: 15%;
     }
+    
 }
 
 @media (min-width: 1024px) {
@@ -28,6 +22,8 @@
 }
 
 .footer {
+    margin-top: 72px;
+    position: absolute;
     background-color: #743ee5;
     color: #d1d5db;
     font-size: 0.875rem;
@@ -35,11 +31,21 @@
 
 .items {
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 3rem;
-    padding-bottom: 2rem;
-    padding-left: 3rem;
+    padding-left: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.items .div:nth-last-child {
+    align-items: center;
+}
+.socialMedia{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 16px;
 }
 
 @media (min-width: 768px) {
