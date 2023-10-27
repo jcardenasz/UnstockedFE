@@ -21,7 +21,7 @@ export default function LogInForm(): JSX.Element{
                 <input type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }} />
                 <input type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }} />
                 <button>Sign In</button>
-                <span><a style={{fontSize:'12px'}} href="./resetPassword">Forgot your password?</a></span>
+                <span><a href="./resetPassword">Forgot your password?</a></span>
                 <span>or use your account</span>
                 <SocialIcons/>
             </form>
