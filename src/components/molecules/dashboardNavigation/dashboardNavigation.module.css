@@ -1,0 +1,38 @@
+.dashboardNavigation{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    top: 72px;
+    position: relative;
+    width: 240px;
+    height: -webkit-fill-available;
+    border-right: 1px solid rgba(0, 0, 0 , 0.12);
+    padding: 16px 16px 0px;
+}
+
+.item{
+    border-radius: 5px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+    padding: 5px 10px 5px 10px;
+    margin: 5px;
+}
+
+.span{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.redspan{
+    display: flex;
+    align-items: center;
+    color: red;
+}
+
+.item:hover{
+    background-color: ghostwhite;
+}
