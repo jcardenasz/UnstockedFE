@@ -1,0 +1,59 @@
+.container{
+    position: relative;
+    overflow: auto;
+    top: 72px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    background: white;
+}
+
+.title{
+    font-size: 32px;
+    font-weight: bolder;
+    margin: 0 0 0 40px;
+}
+
+.button{
+    display: block;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 40px;
+    color: #ffffff;
+    border: 2px solid #743EE5;
+    background: #743EE5;
+    padding: 5px 15px;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+.button:hover{
+    color: #743EE5;
+    background: #ffffff;
+}
+
+.description{
+    display: flex;
+    margin: 15px 0 25px 40px
+}
+
+.leftSection{
+    width: 50%;
+}
+
+.rightSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+@media (max-width: 768px) { /* Adjust the max-width value to your desired medium screen breakpoint */
+
+    .leftSection, .rightSection {
+        width: 100%;
+    }
+}

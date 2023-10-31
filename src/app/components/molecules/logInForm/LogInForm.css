@@ -1,9 +1,0 @@
-a {
-    font-size: 10px;
-    color: black;
-    transition: font-size 1s;
-}
-a:hover{
-    font-size: 12px;
-    color:red;
-}
