@@ -1,3 +1,4 @@
+import TransactionsHeader from '@/components/atoms/transactionsHeader/TransactionsHeader'
 import DashboardNavigation from '@/components/molecules/dashboardNavigation/DashboardNavigation'
 import Footer from '@/components/molecules/footer/Footer'
 import Navbar from '@/components/molecules/navbar/Navbar'
@@ -16,6 +17,7 @@ export default function Dashboard(): JSX.Element {
         <>
             <Navbar />
             <DashboardNavigation />
+            <TransactionsHeader />
             <Footer />
         </>
     )

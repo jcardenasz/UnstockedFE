@@ -9,7 +9,7 @@ function BusinessCard(): JSX.Element {
         <div className={styles.container}>
             <span className={styles.businessCard}>
                 <span className={styles.businessLogo}>
-                    <BiSolidBusiness />
+                    <BiSolidBusiness size={25} />
                 </span>
                 <div className={styles.textContainer}>
                     <h3 className={styles.businessName}>Business Name</h3>
@@ -18,14 +18,14 @@ function BusinessCard(): JSX.Element {
             </span>
             <div className={styles.divider} />
             <div className={styles.settingsContainer}>
-                <div style={{ marginBottom: '5px' }} className={styles.settingsButton}>
+                <button style={{ marginBottom: '5px' }} className={styles.settingsButton}>
                     <IoSettingsSharp />
                     <p className={styles.settingsText}>Settings</p>
-                </div>
-                <div className={styles.settingsButton}>
+                </button>
+                <button className={styles.settingsButton}>
                     <GrAddCircle />
                     <p className={styles.settingsText}>Add business</p>
-                </div>
+                </button>
             </div>
         </div>
     )

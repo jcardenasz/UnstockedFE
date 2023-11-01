@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import styles from './dashboardNavigation.module.css';
 import { signOut } from "next-auth/react";
 import { BiReceipt } from "react-icons/bi";
@@ -14,29 +14,32 @@ import { FaSignOutAlt } from "react-icons/fa";
 import BusinessCard from "@/components/atoms/businessCard/BusinessCard";
 
 function DashboardNavigation(): JSX.Element {
+
+    const [itemActive, setItemActive] = useState('transactions');
+
     return (
         <nav className={styles.dashboardNavigation}>
             <BusinessCard />
-            <p>Keep track of your business</p>
+            <p className={styles.title}>Keep track of your business</p>
             <ul>
-                <li className={styles.item}>
-                    <Link href="/dashboard">
+                <li className={`${styles.item} ${itemActive === 'transactions' ? styles.active : ''}`}>
+                    <Link href="/dashboard" onClick={() => { setItemActive('transactions') }}>
                         <span className={styles.span}>
                             <BiReceipt />
                             <p style={{ marginLeft: '8px' }}>Transactions</p>
                         </span>
                     </Link>
                 </li>
-                <li className={styles.item}>
-                    <Link href="/dashboard/products">
+                <li className={`${styles.item} ${itemActive === 'products' ? styles.active : ''}`}>
+                    <Link href="/dashboard/products" onClick={() => { setItemActive('products') }}>
                         <span className={styles.span}>
                             <BsBoxSeam />
                             <p style={{ marginLeft: '8px' }}>Products</p>
                         </span>
                     </Link>
                 </li>
-                <li className={styles.item}>
-                    <Link href="/dashboard/employees">
+                <li className={`${styles.item} ${itemActive === 'employees' ? styles.active : ''}`}>
+                    <Link href="/dashboard/employees" onClick={() => { setItemActive('employees') }}>
                         <span className={styles.span}>
                             <RiTeamLine />
                             <p style={{ marginLeft: '8px' }}>Employees</p>
@@ -44,18 +47,18 @@ function DashboardNavigation(): JSX.Element {
                     </Link>
                 </li>
             </ul>
-            <p>Contacts</p>
+            <p className={styles.title}>Contacts</p>
             <ul>
-                <li className={styles.item}>
-                    <Link href="/dashboard/clients">
+                <li className={`${styles.item} ${itemActive === 'clients' ? styles.active : ''}`}>
+                    <Link href="/dashboard/clients" onClick={() => { setItemActive('clients') }}>
                         <span className={styles.span}>
                             <AiOutlineTeam />
                             <p style={{ marginLeft: '8px' }}>Clients</p>
                         </span>
                     </Link>
                 </li>
-                <li className={styles.item}>
-                    <Link href="/dashboard/providers">
+                <li className={`${styles.item} ${itemActive === 'providers' ? styles.active : ''}`}>
+                    <Link href="/dashboard/providers" onClick={() => { setItemActive('providers') }}>
                         <span className={styles.span}>
                             <CiBoxes />
                             <p style={{ marginLeft: '8px' }}>Providers</p>
@@ -63,10 +66,10 @@ function DashboardNavigation(): JSX.Element {
                     </Link>
                 </li>
             </ul>
-            <p>Settings</p>
+            <p className={styles.title}>Settings</p>
             <ul>
                 <li className={styles.item}>
-                    <Link href="/" target="_blank">
+                    <Link href="/assets/sample-terms-conditions-agreement.pdf" target="_blank">
                         <span className={styles.span}>
                             <RxHamburgerMenu />
                             <p style={{ marginLeft: '8px' }}>Terms & Conditions</p>
@@ -74,7 +77,7 @@ function DashboardNavigation(): JSX.Element {
                     </Link>
                 </li>
                 <li className={styles.item}>
-                    <Link href="/" target="_blank">
+                    <Link href="/assets/sample-privacy-policy-template.pdf" target="_blank">
                         <span className={styles.span}>
                             <RxHamburgerMenu />
                             <p style={{ marginLeft: '8px' }}>Privacy Policy</p>
