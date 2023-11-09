@@ -1,7 +1,5 @@
 .transactionsHeader{
-    position: absolute;
-    top:72px;
-    left: 240px;
+    position: relative;
     width: -webkit-fill-available;
     height: 72px;
     display: flex;

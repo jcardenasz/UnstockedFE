@@ -15,7 +15,8 @@ import BusinessCard from "@/components/atoms/businessCard/BusinessCard";
 
 function DashboardNavigation(): JSX.Element {
 
-    const [itemActive, setItemActive] = useState('transactions');
+    const [itemActive, setItemActive] = useState('');
+
 
     return (
         <nav className={styles.dashboardNavigation}>
@@ -23,7 +24,7 @@ function DashboardNavigation(): JSX.Element {
             <p className={styles.title}>Keep track of your business</p>
             <ul>
                 <li className={`${styles.item} ${itemActive === 'transactions' ? styles.active : ''}`}>
-                    <Link href="/dashboard" onClick={() => { setItemActive('transactions') }}>
+                    <Link href="/dashboard/transactions" onClick={() => { setItemActive('transactions') }}>
                         <span className={styles.span}>
                             <BiReceipt />
                             <p style={{ marginLeft: '8px' }}>Transactions</p>

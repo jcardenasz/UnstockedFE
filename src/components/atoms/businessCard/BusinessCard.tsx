@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./businessCard.module.css";
 import { BiSolidBusiness } from "react-icons/bi";
 import { IoSettingsSharp } from "react-icons/io5";
-import { GrAddCircle } from "react-icons/gr";
 
 function BusinessCard(): JSX.Element {
     return (
@@ -21,10 +20,6 @@ function BusinessCard(): JSX.Element {
                 <button style={{ marginBottom: '5px' }} className={styles.settingsButton}>
                     <IoSettingsSharp />
                     <p className={styles.settingsText}>Settings</p>
-                </button>
-                <button className={styles.settingsButton}>
-                    <GrAddCircle />
-                    <p className={styles.settingsText}>Add business</p>
                 </button>
             </div>
         </div>
