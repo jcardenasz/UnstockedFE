@@ -16,8 +16,8 @@ export default function Transactions(): JSX.Element {
     return (
         <>
             <TransactionsHeader />
-            <FiltersBar /> {/* Filters button / Input interval filter / Input dates filter / Search bar */}
             <TransactionsSummary /> {/* Balance / Total sales / Total expenses */}
+            <FiltersBar /> {/* Filters button / Input interval filter / Input dates filter / Search bar */}
             <TabsList /> {/* Income / Outcome */}
             {/* Items List */}
         </>

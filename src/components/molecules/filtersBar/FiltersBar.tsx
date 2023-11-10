@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./filtersBar.module.css";
+import SearchBar from "@/components/atoms/searchBar/SearchBar";
 
 function FiltersBar(): JSX.Element {
     return (
@@ -12,7 +13,7 @@ function FiltersBar(): JSX.Element {
                 <option>Yearly</option>
             </select>
             <input className={styles.inputDate} type="date" />
-            <input className={styles.searchbar} placeholder="Search a transaction" />
+            <SearchBar />
         </div>
     )
 }
