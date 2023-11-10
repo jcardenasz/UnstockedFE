@@ -1,0 +1,59 @@
+.container{
+    background-color: rgb(243, 245, 247);
+    border: 1px solid rgb(243, 245, 247);
+    padding: 16px 16px 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.businessCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.businessLogo{
+    width: 30% !important;
+    height: 56px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #743EE5;
+    color: white;
+    border-radius: 100%;
+}
+.textContainer{
+    width: 70%;
+    overflow: hidden;
+    padding-left: 10px;
+}
+.businessName{
+    font-size: 16px;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+
+.userTitle{
+    font-size: 14px;
+    color: rgb(92, 115, 137);
+}
+.divider{
+    height: 0.5px;
+    background-color: rgb(195, 204, 213);
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.settingsContainer{
+    padding: 0px 10px;
+}
+
+.settingsButton{
+    display: flex;
+    align-items: center;
+}
+
+.settingsText{
+    margin-left: 5px;
+    font-size: 12px;
+}
