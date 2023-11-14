@@ -5,7 +5,7 @@ import SummaryCard from '@/components/atoms/summaryCard/SummaryCard';
 function TransactionsSummary(): JSX.Element {
     return (
         <div className={styles.container}>
-            <SummaryCard title='Balance' value={0} type='profit' />
+            <SummaryCard title='Balance' value={0} type='balance' />
             <SummaryCard title='Total Sales' value={0} type='profit' />
             <SummaryCard title='Total Costs' value={0} type='loss' />
         </div>

@@ -12,8 +12,8 @@ function SummaryCard({ title, value, type }: { title: string, value: number, typ
     function logo(): JSX.Element {
         return (
             <>
-                {type === 'profit' ? <BiMoney size={30} /> : null}
-                {type === 'loss' ? <AiOutlineStock size={30} /> : null}
+                {type === 'profit' || type === 'loss' ? <BiMoney size={30} /> : null}
+                {type === 'balance' ? <AiOutlineStock size={30} /> : null}
                 {type === 'product' ? <AiOutlineInbox size={30} /> : null}
             </>
         )
@@ -35,6 +35,12 @@ function SummaryCard({ title, value, type }: { title: string, value: number, typ
             validationTypeText = styles.productText;
             text = value;
             break;
+        default:
+            validationType = styles.product;
+            validationTypeText = styles.productText;
+            text = value;
+            break;
+
     }
 
     const logoStyle = `${styles.logo} ${validationType}`;

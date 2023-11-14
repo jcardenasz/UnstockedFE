@@ -17,8 +17,6 @@ function LandingNavbar(): React.JSX.Element {
             <nav className={`${styles.nav} ${showDropdown ? styles.active : ''}`}>
                 <ul>
                     <li><Link href="/">Home</Link></li>
-                    <li><Link href="/about">About Us</Link></li>
-                    <li><Link href="/contact">Contact Us</Link></li>
                     {status === 'authenticated' ? <li><Link href="/dashboard">Dashboard</Link></li> : null}
                     <li>{status === 'authenticated' ? <button onClick={() => { void signOut() }}>Sign out</button> : <Link href="/authentication">Get Started</Link>}</li>
                 </ul>
