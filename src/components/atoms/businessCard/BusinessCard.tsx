@@ -17,10 +17,10 @@ function BusinessCard(): JSX.Element {
             </span>
             <div className={styles.divider} />
             <div className={styles.settingsContainer}>
-                <button style={{ marginBottom: '5px' }} className={styles.settingsButton}>
+                <a href="/dashboard" style={{ marginBottom: '5px' }} className={styles.settingsButton}>
                     <IoSettingsSharp />
                     <p className={styles.settingsText}>Settings</p>
-                </button>
+                </a>
             </div>
         </div>
     )

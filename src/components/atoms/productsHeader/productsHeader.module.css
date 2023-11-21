@@ -27,6 +27,7 @@
     line-height: 1.5rem;
     border-radius: 12px;
     box-shadow: none;
+    text-wrap: nowrap;
     margin: 0px;
     height: 36px;
     padding: 8px 24px;
@@ -47,6 +48,7 @@
     margin: 5px;
     border-radius: 12px;
     font-size: 1rem;
+    text-wrap: nowrap;
     height: 36px;
     font-weight: 600;
     font-style: normal;

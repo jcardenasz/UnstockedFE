@@ -1,12 +1,20 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import styles from './productsSummary.module.css';
 import SearchBar from '@/components/atoms/searchBar/SearchBar';
 import SummaryCard from '@/components/atoms/summaryCard/SummaryCard';
 import { FaPencilAlt } from 'react-icons/fa';
+import RightBar from '@/components/atoms/rightBar/RightBar';
 
 function ProductsSummary(): JSX.Element {
 
+    const [editCategoryIsOpen, setEditCategoryIsOpen] = useState(false);
+
     const categoriesList = ['Op 1', 'Op 2', 'Op 3'];
+
+    const handleEditCategory = (): void => {
+        setEditCategoryIsOpen(true);
+    }
 
     return (
         <div>
@@ -15,7 +23,7 @@ function ProductsSummary(): JSX.Element {
                 <SummaryCard title='Total Inventory Cost' value={0} type='profit' />
             </div>
             <div className={styles.searchBarContainer}>
-                <button className={styles.editCategoriesButton}><FaPencilAlt />Categories</button>
+                <button onClick={handleEditCategory} className={styles.editCategoriesButton}><FaPencilAlt />Categories</button>
                 <select className={styles.selectCategory}>
                     <option>All categories</option>
                     {categoriesList.map((category) =>
@@ -24,6 +32,9 @@ function ProductsSummary(): JSX.Element {
                 </select>
                 <SearchBar />
             </div>
+            <RightBar isOpen={editCategoryIsOpen} setIsOpen={setEditCategoryIsOpen} title='Edit Category'>
+                <p>Edit Category</p>
+            </RightBar>
         </div>
     )
 }

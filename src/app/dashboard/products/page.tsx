@@ -13,10 +13,8 @@ export default function Products(): JSX.Element {
 
     return (
         <>
-            <ProductsHeader /> {/* Title / Create Category button / Add products button */}
-            <ProductsSummary /> {/* Searchbar */}
-            {/* Total Products / Total Inventory Cost */}
-            {/* Categories select / Order select / Edit categories button */}
+            <ProductsHeader />
+            <ProductsSummary />
             {/* Products grid */}
         </>
     )
