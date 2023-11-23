@@ -1,20 +1,16 @@
 'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './productsSummary.module.css';
 import SearchBar from '@/components/atoms/searchBar/SearchBar';
 import SummaryCard from '@/components/atoms/summaryCard/SummaryCard';
 import { FaPencilAlt } from 'react-icons/fa';
-import RightBar from '@/components/atoms/rightBar/RightBar';
 
-function ProductsSummary(): JSX.Element {
+interface productsSummaryProps {
+    handleEditCategory: () => void,
+    categoriesList: string[],
+}
 
-    const [editCategoryIsOpen, setEditCategoryIsOpen] = useState(false);
-
-    const categoriesList = ['Op 1', 'Op 2', 'Op 3'];
-
-    const handleEditCategory = (): void => {
-        setEditCategoryIsOpen(true);
-    }
+function ProductsSummary({ handleEditCategory, categoriesList }: productsSummaryProps): JSX.Element {
 
     return (
         <div>
@@ -32,9 +28,6 @@ function ProductsSummary(): JSX.Element {
                 </select>
                 <SearchBar />
             </div>
-            <RightBar isOpen={editCategoryIsOpen} setIsOpen={setEditCategoryIsOpen} title='Edit Category'>
-                <p>Edit Category</p>
-            </RightBar>
         </div>
     )
 }

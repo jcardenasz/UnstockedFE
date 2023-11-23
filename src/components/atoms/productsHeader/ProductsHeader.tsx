@@ -1,23 +1,14 @@
 'use client'
 
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './productsHeader.module.css';
-import RightBar from '../rightBar/RightBar';
 
-function ProductsHeader(): JSX.Element {
+interface productsHeaderProps {
+    handleAddCategory: () => void,
+    handleAddProduct: () => void,
+}
 
-    const [addCategoryIsOpen, setAddCategoryIsOpen] = useState(false);
-    const [addProductIsOpen, setAddProductIsOpen] = useState(false);
-
-    const handleAddCategory = (): void => {
-        setAddCategoryIsOpen(true);
-    }
-
-    const handleAddProduct = (): void => {
-        setAddProductIsOpen(true);
-    }
-
-
+function ProductsHeader({ handleAddCategory, handleAddProduct }: productsHeaderProps): JSX.Element {
 
     return (
         <>
@@ -29,13 +20,6 @@ function ProductsHeader(): JSX.Element {
                     <button className={styles.newProductButton} onClick={handleAddProduct}>Add products</button>
                 </div>
             </header>
-            <RightBar isOpen={addCategoryIsOpen} setIsOpen={setAddCategoryIsOpen} title='Add Category'>
-                <label>Category Name *</label>
-                <input />
-            </RightBar>
-            <RightBar isOpen={addProductIsOpen} setIsOpen={setAddProductIsOpen} title='Add Product'>
-                <p>Add Product</p>
-            </RightBar>
         </>
 
     )
