@@ -1,0 +1,6 @@
+.informationContainer{
+    position: absolute;
+    top:72px;
+    left: 240px;
+    width: -webkit-fill-available;
+}

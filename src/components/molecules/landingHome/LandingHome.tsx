@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import LandingNavbar from '../landingNavbar/LandingNavbar'
+import LandingNavbar from '../navbar/Navbar'
 import Image from 'next/image'
-import image from '../../../assets/landingPage.jpg'
+import image from '../../../../public/assets/landingPage.jpg'
 import styles from './landingHome.module.css'
 import Link from 'next/link'
 import Footer from '../footer/Footer'
@@ -10,9 +10,9 @@ import { useSession } from 'next-auth/react'
 
 function LandingHome(): React.JSX.Element {
 
-    const {status} = useSession();
-    const buttonText = status === 'authenticated' ? 'Dashboard':'Start Now!';
-    const buttonHref = status === 'authenticated' ? '/dashboard':'/authentication';
+    const { status } = useSession();
+    const buttonText = status === 'authenticated' ? 'Dashboard' : 'Start Now!';
+    const buttonHref = status === 'authenticated' ? '/dashboard' : '/authentication';
 
     return (
         <>

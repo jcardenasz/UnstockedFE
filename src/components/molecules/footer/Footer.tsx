@@ -15,10 +15,8 @@ function Footer(): React.JSX.Element {
                 <FooterList>
                     <h3 className="text-base font-bold mb-2">UNstocked</h3>
                     <Link href="#">Home</Link>
-                    <Link href="/about">About Us</Link>
                     <Link href="#">Services</Link>
                     <Link href="#">Privacy Policy</Link>
-                    <Link href="/contact">Contact Us</Link>
                     <Link href="#">FAQ</Link>
                 </FooterList>
                 <div className="w-full md:w-1/3">
