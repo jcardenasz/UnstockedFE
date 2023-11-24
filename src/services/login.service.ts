@@ -1,23 +1,24 @@
 import Swal from 'sweetalert2'
-import { type SignInResponse, signIn } from 'next-auth/react'
 
-export async function loginUser(email: string, password: string): Promise<SignInResponse> {
-
-    const responseNextAuth = await signIn("credentials", {
-        email,
-        password,
-        redirect: false
+export async function loginUser(email: string, password: string): Promise<{status: number, data: any}> {
+    const response = await fetch('http://localhost:4000/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
     })
 
-    if ((responseNextAuth?.error) != null) {
+    const data = await response.json()
+
+    if (!response.ok) {
         void Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Wrong Email or Password!'
         })
-        return responseNextAuth;
+        return { status: response.status, data }
     }
-
-    
-    return responseNextAuth as SignInResponse;
+    return { status: response.status, data }
+    // status is either 200 400.
 }

@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client'
-import React , {useState} from 'react'
+import React , {useState, useEffect} from 'react'
 import SocialIcons from '@/components/atoms/socialIcons/SocialIcons'
 import UnStockedLogo from '@/components/atoms/unstockedLogo/UnStockedLogo'
-
 import styles from './logInForm.module.css'
-
-import { loginUser } from '@/services/login.service'
+import { loginUser } from '@/Services/login.service'
 import Swal from 'sweetalert2'
+import { useRouter } from 'next/navigation'
 
 export default function LogInForm(): JSX.Element{
-
+    const router = useRouter();
+    const [loginInfo, setLoginInfo] = useState<{ status: number; data: any; } | null>(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const Toast = Swal.mixin({
@@ -24,18 +24,26 @@ export default function LogInForm(): JSX.Element{
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
     })
-
     const handleSubmit = async(event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        
         event.preventDefault();
         const res = await loginUser(email , password);
-        if ((res).ok){
+        setLoginInfo(res);
+        // no estaba funcionando el if, tuve que cambiar la funcion login para devolver el status
+        if (res.status === 200){
+            console.log("successful");
             void Toast.fire({
                 icon:'success',
                 title: 'Signed in successfully'
             })
-        }
+        }else console.log("error, not successful");
     }
-
+    useEffect(() => {
+        if (loginInfo != null && loginInfo.status === 200) {
+            console.log("redirecting...");
+            router.push('/dashboard');
+        }
+    }, [loginInfo]);
     return(
         <div className="form-container sign-in-container">
             <form className={styles.logInForm} action="#" onSubmit={handleSubmit}>
