@@ -5,6 +5,8 @@ import styles from './products.module.css';
 import React, { useState } from 'react';
 import RightBar from '@/components/atoms/rightBar/RightBar';
 import { IoIosArrowForward } from 'react-icons/io';
+import { useSession } from 'next-auth/react';
+import { getCategories } from '@/services/category.service';
 
 // import { useRouter } from 'next/navigation'
 
@@ -18,6 +20,14 @@ export default function Products(): JSX.Element {
     const [addCategoryIsOpen, setAddCategoryIsOpen] = useState(false);
     const [addProductIsOpen, setAddProductIsOpen] = useState(false);
     const [editCategoryIsOpen, setEditCategoryIsOpen] = useState(false);
+
+    const { data: session, status } = useSession();
+
+    console.log({ session, status });
+
+    const categoriesL = getCategories();
+
+    console.log(categoriesL);
 
     const categoriesList = ['Op 1', 'Op 2', 'Op 3', 'Op 4', 'Op 5', 'Op 6', 'Op 7', 'Op 8', 'Op 9', 'Op 10'];
 
