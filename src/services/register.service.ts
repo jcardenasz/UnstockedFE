@@ -1,12 +1,11 @@
-import { signIn } from "next-auth/react";
 import Swal from 'sweetalert2'
 
-export async function registerUser(username: string, email: string, password: string): Promise<Response>{
+export async function registerUser(username: string, email: string, password: string): Promise<Response> {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/register`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/register`, {
         method: "POST",
         headers: {
-            'Cache-Control':'max-age=120',
+            'Cache-Control': 'max-age=120',
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -25,21 +24,27 @@ export async function registerUser(username: string, email: string, password: st
         return res;
     }
 
-    const responseNextAuth = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
+    const resLogin = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
+        method: "POST",
+        headers: {
+            'Cache-Control': 'max-age=120',
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            email,
+            password,
+        }),
     });
 
-    if ((responseNextAuth?.error) != null) {
+    if ((!resLogin.ok)) {
         void Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong'
+            text: 'Wrong Email or Password!'
         })
-        return res;
+        return resLogin;
     }
 
-    
+
     return res;
 }
