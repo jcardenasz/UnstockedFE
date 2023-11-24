@@ -1,8 +1,8 @@
 import Swal from 'sweetalert2'
 
 export async function loginUser(email: string, password: string): Promise<{status: number, data: any}> {
-    // const response = await fetch('http://localhost:4000/api/login', {
-    const response = await fetch('https://unstocked-fe.vercel.app/login', {
+    // const response = await fetch(`${process.env.BACKEND_URL}/login`, {
+    const response = await fetch("http://u-nstocked-bmb5.vercel.app/api/login", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -21,5 +21,4 @@ export async function loginUser(email: string, password: string): Promise<{statu
         return { status: response.status, data }
     }
     return { status: response.status, data }
-    // status is either 200 400.
 }
