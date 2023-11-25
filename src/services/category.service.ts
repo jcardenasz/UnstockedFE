@@ -1,5 +1,3 @@
-import Swal from "sweetalert2";
-
 export async function getCategories(): Promise<Response> {
 
     const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`, {
@@ -25,17 +23,6 @@ export async function addCategory(name: string): Promise<Response> {
             description: 'Default Description',
         }),
     });
-
-    console.log(res.json());
-
-    if (!res.ok) {
-        void Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong'
-        })
-        return res;
-    }
 
     return res;
 }

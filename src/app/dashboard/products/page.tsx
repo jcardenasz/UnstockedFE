@@ -26,13 +26,14 @@ export default function Products(): JSX.Element {
 
     const { data: session, status } = useSession();
 
+    const categoriesList = ['Op 1', 'Op 2', 'Op 3', 'Op 4', 'Op 5', 'Op 6', 'Op 7', 'Op 8', 'Op 9', 'Op 10'];
     console.log({ session, status });
 
-    const categoriesL = getCategories();
+    const categoriesResponse = getCategories().then(result => { return result });
 
-    console.log('Categorias: ', categoriesL);
 
-    const categoriesList = ['Op 1', 'Op 2', 'Op 3', 'Op 4', 'Op 5', 'Op 6', 'Op 7', 'Op 8', 'Op 9', 'Op 10'];
+    console.log('Categorias: ', categoriesResponse);
+
 
     const handleAddCategory = (): void => {
         setAddCategoryIsOpen(true);

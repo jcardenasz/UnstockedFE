@@ -24,10 +24,20 @@ function AddCategoryForm(): JSX.Element {
         event.preventDefault();
         const res = await addCategory(categoryName);
 
+        const data = await res.json()
+
         if ((res).ok) {
             void Toast.fire({
                 icon: 'success',
                 title: 'Category created successfully'
+            })
+        }
+
+        if (!res.ok) {
+            void Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: data.error[0]
             })
         }
     };
