@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import RightBar from '@/components/atoms/rightBar/RightBar';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useSession } from 'next-auth/react';
-import { getCategories } from '@/services/category.service';
+import { getCategories } from '@/Services/category.service';
 import AddCategoryForm from '@/components/molecules/addCategoryForm/AddCategoryForm';
 
 // import { useRouter } from 'next/navigation'
