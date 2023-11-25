@@ -23,21 +23,34 @@ function AddCategoryForm(): JSX.Element {
     const handleAddCategorySubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
         const res = await addCategory(categoryName);
+        let data;
 
-        const data = await res.json()
+        if (res.status !== 500) {
+            data = await res.json()
+            if (!res.ok) {
+                void Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data.error[0]
+                })
+            }
+        } else {
+            data = {
+                error: 'Category Already Exists'
+            }
+            if (!res.ok) {
+                void Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data.error
+                })
+            }
+        }
 
         if ((res).ok) {
             void Toast.fire({
                 icon: 'success',
                 title: 'Category created successfully'
-            })
-        }
-
-        if (!res.ok) {
-            void Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: data.error[0]
             })
         }
     };
