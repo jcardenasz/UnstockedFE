@@ -9,6 +9,7 @@ export async function loginUser(email: string, password: string): Promise<SignIn
         password,
         redirect: false
     })
+    // Juan Camilo - 2023-11-25
     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
         // const response = await fetch("http://u-nstocked-bmb5.vercel.app/api/login", {
         method: 'POST',
