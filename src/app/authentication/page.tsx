@@ -9,10 +9,10 @@ import { useRouter } from 'next/navigation'
 
 export default function Authentication(): JSX.Element {
 
-    const { data, data: session, status } = useSession();
+    const { data: session, status } = useSession();
     const router = useRouter();
 
-    console.log({ data, session, status });
+    console.log({ session, status });
 
     if (status === 'authenticated') {
         router.push("/")
