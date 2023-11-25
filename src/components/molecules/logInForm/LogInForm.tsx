@@ -4,7 +4,7 @@ import React , {useState} from 'react'
 import SocialIcons from '@/components/atoms/socialIcons/SocialIcons'
 import UnStockedLogo from '@/components/atoms/unstockedLogo/UnStockedLogo'
 import styles from './logInForm.module.css'
-import { loginUser } from '@/Services/login.service'
+import { loginUser } from '@/services/login.service'
 import Swal from 'sweetalert2'
 
 export default function LogInForm(): JSX.Element{
