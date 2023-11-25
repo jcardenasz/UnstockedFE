@@ -1,31 +1,33 @@
-export const env = {
-    browser: true,
-    es2021: true,
-};
-export const extend = [
-    'standard-with-typescript',
-    'plugin:react/recommended',
-    'prettier',
-];
-export const overrides = [
-    {
-        env: {
-            node: true,
+module.exports = {
+    env: {
+        browser: true,
+        es2021: true,
+    },
+    extends: [
+        'standard-with-typescript',
+        'plugin:react/recommended',
+        'prettier',
+    ],
+    overrides: [
+        {
+            env: {
+                node: true,
+            },
+            files: ['.eslintrc.{js,cjs}'],
+            parserOptions: {
+                sourceType: 'script',
+            },
         },
-        files: ['.eslintrc.{js,cjs}'],
-        parserOptions: {
-            sourceType: 'script',
+    ],
+    parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+    },
+    plugins: ['react'],
+    rules: {},
+    settings: {
+        react: {
+            version: 'detect',
         },
     },
-];
-export const parserOptions = {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-};
-export const plugins = ['react'];
-export const rules = {};
-export const settings = {
-    react: {
-        version: 'detect',
-    },
-};
+}
