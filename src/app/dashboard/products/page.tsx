@@ -5,6 +5,9 @@ import styles from './products.module.css';
 import React, { useState } from 'react';
 import RightBar from '@/components/atoms/rightBar/RightBar';
 import { IoIosArrowForward } from 'react-icons/io';
+import { useSession } from 'next-auth/react';
+import { getCategories } from '@/services/category.service';
+import AddCategoryForm from '@/components/molecules/addCategoryForm/AddCategoryForm';
 
 // import { useRouter } from 'next/navigation'
 
@@ -15,9 +18,19 @@ import { IoIosArrowForward } from 'react-icons/io';
 
 export default function Products(): JSX.Element {
 
+
+
     const [addCategoryIsOpen, setAddCategoryIsOpen] = useState(false);
     const [addProductIsOpen, setAddProductIsOpen] = useState(false);
     const [editCategoryIsOpen, setEditCategoryIsOpen] = useState(false);
+
+    const { data: session, status } = useSession();
+
+    console.log({ session, status });
+
+    const categoriesL = getCategories();
+
+    console.log('Categorias: ', categoriesL);
 
     const categoriesList = ['Op 1', 'Op 2', 'Op 3', 'Op 4', 'Op 5', 'Op 6', 'Op 7', 'Op 8', 'Op 9', 'Op 10'];
 
@@ -39,11 +52,7 @@ export default function Products(): JSX.Element {
             <ProductsSummary handleEditCategory={handleEditCategory} categoriesList={categoriesList} />
             {/* Products grid */}
             <RightBar isOpen={addCategoryIsOpen} setIsOpen={setAddCategoryIsOpen} title='Add Category'>
-                <form className={styles.form}>
-                    <label className={styles.newLabel}>Category Name*</label>
-                    <input className={styles.newInput} type='text' placeholder='Write the name of your new category' required />
-                    <button className={styles.newCategorySubmitButton}>Add category</button>
-                </form>
+                <AddCategoryForm />
             </RightBar>
             <RightBar isOpen={addProductIsOpen} setIsOpen={setAddProductIsOpen} title='Add Product'>
                 <form className={styles.form}>
