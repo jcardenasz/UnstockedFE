@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import LogInForm from '@/components/molecules/logInForm/LogInForm'
 import SignUpForm from '@/components/molecules/signUpForm/SignUpForm'
 import Overlay from '@/components/molecules/overlay/Overlay'
@@ -13,10 +13,11 @@ export default function Authentication(): JSX.Element{
     const router = useRouter();
 
     console.log({session, status});
-
-    if(status === 'authenticated'){
-        router.push("/")
-    }
+    useEffect(() => {
+        if(status === 'authenticated'){
+            router.push("/")
+        }
+    }, [status, router]);
 
     return (
         <div className="falseBody">
