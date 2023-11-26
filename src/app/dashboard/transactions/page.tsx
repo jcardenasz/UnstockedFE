@@ -3,6 +3,9 @@ import TransactionsHeader from '@/components/atoms/transactionsHeader/Transactio
 import FiltersBar from '@/components/molecules/filtersBar/FiltersBar';
 import TransactionsSummary from '@/components/molecules/transactionsSummary/TransactionsSummary';
 import React from 'react';
+import RightBar from '@/components/atoms/rightBar/RightBar';
+import AddSaleForm from '@/components/molecules/addSaleForm/addSaleForm';
+import AddExpenseForm from '@/components/molecules/addExpenseForm/addExpenseForm';
 
 // import { useRouter } from 'next/navigation'
 
@@ -13,6 +16,9 @@ import React from 'react';
 
 export default function Transactions(): JSX.Element {
 
+    const [addSaleIsOpen, setAddSaleIsOpen] = React.useState(false);
+    const [addExpenseIsOpen, setAddExpenseIsOpen] = React.useState(false);
+
     return (
         <>
             <TransactionsHeader />
@@ -20,6 +26,12 @@ export default function Transactions(): JSX.Element {
             <FiltersBar /> {/* Filters button / Input interval filter / Input dates filter / Search bar */}
             <TabsList /> {/* Income / Outcome */}
             {/* Items List */}
+            <RightBar isOpen={addSaleIsOpen} setIsOpen={setAddSaleIsOpen} title='Add Sale'>
+                <AddSaleForm setAddSaleIsOpen={setAddSaleIsOpen} />
+            </RightBar>
+            <RightBar isOpen={addExpenseIsOpen} setIsOpen={setAddExpenseIsOpen} title='Add Expense'>
+                <AddExpenseForm setAddExpenseIsOpen={setAddExpenseIsOpen} />
+            </RightBar>
         </>
     )
 }

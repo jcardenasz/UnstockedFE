@@ -28,13 +28,15 @@ function RightBar({ children, isOpen = false, setIsOpen, title = 'Title' }: righ
 
                     </div>
                     <div className={styles.rightBar} ref={rightBarRef}>
-                        <header className={styles.rightBarHeader}>
-                            <h1 className={styles.title}>{title}</h1>
-                            <button onClick={handleClose}>
-                                <IoIosCloseCircle size={20} />
-                            </button>
-                        </header>
-                        {children}
+                        <div className = {styles.rightBarContainer}> 
+                            <header className={styles.rightBarHeader}>
+                                <h1 className={styles.title}>{title}</h1>
+                                <button onClick={handleClose}>
+                                    <IoIosCloseCircle size={20} />
+                                </button>
+                            </header>
+                            {children}
+                        </div>
                     </div>
                 </>
 
