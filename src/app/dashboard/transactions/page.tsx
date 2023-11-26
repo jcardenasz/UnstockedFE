@@ -1,3 +1,4 @@
+'use client'
 import TabsList from '@/components/atoms/tabsList/TabsList';
 import TransactionsHeader from '@/components/atoms/transactionsHeader/TransactionsHeader';
 import FiltersBar from '@/components/molecules/filtersBar/FiltersBar';
@@ -19,10 +20,19 @@ export default function Transactions(): JSX.Element {
     const [addSaleIsOpen, setAddSaleIsOpen] = React.useState(false);
     const [addExpenseIsOpen, setAddExpenseIsOpen] = React.useState(false);
 
+
+    const handleAddExpense = (): void => {
+        setAddExpenseIsOpen(true);
+    }
+
+    const handleAddSale = (): void => {
+        setAddSaleIsOpen(true);
+    }
+
     return (
         <>
-            <TransactionsHeader />
-            <TransactionsSummary /> {/* Balance / Total sales / Total expenses */}
+            <TransactionsHeader _handleAddSale={handleAddSale} _handleAddExpense={handleAddExpense}/>
+            <TransactionsSummary/> {/* Balance / Total sales / Total expenses */}
             <FiltersBar /> {/* Filters button / Input interval filter / Input dates filter / Search bar */}
             <TabsList /> {/* Income / Outcome */}
             {/* Items List */}

@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import styles from './addCategoryForm.module.css';
+import styles from './addSaleForm.module.css';
 import { addSale } from '@/services/sale.service';
 
 function AddSaleForm({ setAddSaleIsOpen }: { setAddSaleIsOpen: (val: boolean) => void }): JSX.Element {

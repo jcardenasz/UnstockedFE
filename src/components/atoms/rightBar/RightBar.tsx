@@ -1,3 +1,4 @@
+'use client'
 import React, { useRef, type ReactNode } from 'react';
 import styles from './rightBar.module.css';
 import { IoIosCloseCircle } from "react-icons/io";
