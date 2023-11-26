@@ -8,6 +8,7 @@ import { useSession } from 'next-auth/react';
 import { getCategories } from '@/services/category.service';
 import AddCategoryForm from '@/components/molecules/addCategoryForm/AddCategoryForm';
 import EditCategoryPanel from '@/components/molecules/editCategoryPanel/EditCategoryPanel';
+import ProductsGrid from '@/components/molecules/productsGrid/ProductsGrid';
 
 // import { useRouter } from 'next/navigation'
 
@@ -23,6 +24,57 @@ export default function Products(): JSX.Element {
     const [addProductIsOpen, setAddProductIsOpen] = useState(false);
     const [editCategoryIsOpen, setEditCategoryIsOpen] = useState(false);
 
+    const productsList = [
+        {
+            id: "656393458e0bb84c89a01fce",
+            name: "productoPrueba1",
+            description: "Increíble producto de prueba 1",
+            stock: 25,
+            picture: "https://imgs.search.brave.com/8WORFhnF6UELgJxac7Nuk6JpuFN8V8QEUGgqV9WDShg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE3MzkxMzUzL3Iv/aWwvNjUwNGMxLzM1/MzEwNjkyNzMvaWxf/NjAweDYwMC4zNTMx/MDY5MjczX3RoYXEu/anBn",
+            price: 5000,
+            userId: "653c0608195e0930f96230f7",
+            createdAt: "2023-11-26T18:49:41.082Z",
+            updatedAt: "2023-11-26T18:49:41.082Z",
+            v: 0
+        },
+        {
+            id: "656393e88e0bb84c89a01fd4",
+            name: "productoPrueba2",
+            description: "Increíble producto de prueba 2",
+            stock: 45,
+            picture: "https://imgs.search.brave.com/8WORFhnF6UELgJxac7Nuk6JpuFN8V8QEUGgqV9WDShg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE3MzkxMzUzL3Iv/aWwvNjUwNGMxLzM1/MzEwNjkyNzMvaWxf/NjAweDYwMC4zNTMx/MDY5MjczX3RoYXEu/anBn",
+            price: 8000,
+            userId: "653c0608195e0930f96230f7",
+            createdAt: "2023-11-26T18:52:24.526Z",
+            updatedAt: "2023-11-26T18:52:24.526Z",
+            v: 0
+        },
+        {
+            id: "656393f18e0bb84c89a01fd8",
+            name: "productoPrueba3",
+            description: "Increíble producto de prueba 3",
+            stock: 45,
+            picture: "https://imgs.search.brave.com/8WORFhnF6UELgJxac7Nuk6JpuFN8V8QEUGgqV9WDShg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE3MzkxMzUzL3Iv/aWwvNjUwNGMxLzM1/MzEwNjkyNzMvaWxf/NjAweDYwMC4zNTMx/MDY5MjczX3RoYXEu/anBn",
+            price: 10000,
+            userId: "653c0608195e0930f96230f7",
+            createdAt: "2023-11-26T18:52:33.070Z",
+            updatedAt: "2023-11-26T18:52:33.070Z",
+            v: 0
+        },
+        {
+            id: "656393fb8e0bb84c89a01fdc",
+            name: "productoPrueba4",
+            description: "Increíble producto de prueba 4",
+            stock: 10,
+            picture: "https://imgs.search.brave.com/8WORFhnF6UELgJxac7Nuk6JpuFN8V8QEUGgqV9WDShg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzE3MzkxMzUzL3Iv/aWwvNjUwNGMxLzM1/MzEwNjkyNzMvaWxf/NjAweDYwMC4zNTMx/MDY5MjczX3RoYXEu/anBn",
+            price: 10000,
+            userId: "653c0608195e0930f96230f7",
+            createdAt: "2023-11-26T18:52:43.576Z",
+            updatedAt: "2023-11-26T18:52:43.576Z",
+            v: 0
+        }
+    ]
+
     const { data: session, status } = useSession();
 
     console.log({ session, status });
@@ -30,26 +82,19 @@ export default function Products(): JSX.Element {
     const newList: any = [];
 
     useEffect(() => {
-        void fetchData();
+        void fetchCategoriesData();
     }, [addCategoryIsOpen, editCategoryIsOpen]);
 
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    const fetchData = async () => {
+    const fetchCategoriesData = async () => {
         try {
-            console.log('Categories list: ', categoriesList);
             const response = await getCategories();
             const resultStr = JSON.stringify(response);
             const resultObj = JSON.parse(resultStr);
-            console.log('Lista de categorias: ', resultObj)
             for (let i = 0; i < resultObj.length; i++) {
-                // console.log('new list before push: ', newList);
                 newList.push({ id: resultObj[i]._id, name: resultObj[i].name })
-                // console.log('new list after push: ', newList);
-                // newList = [...newList, ];
             }
             setCategoriesList(newList);
-            console.log('new list after push: ', newList);
-            console.log('Categories list after fetch: ', categoriesList);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -72,7 +117,7 @@ export default function Products(): JSX.Element {
         <>
             <ProductsHeader handleAddCategory={handleAddCategory} handleAddProduct={handleAddProduct} />
             <ProductsSummary handleEditCategory={handleEditCategory} categoriesList={categoriesList} />
-            {/* Products grid */}
+            <ProductsGrid productsList={productsList} />
             <RightBar isOpen={addCategoryIsOpen} setIsOpen={setAddCategoryIsOpen} title='Add Category'>
                 <AddCategoryForm setAddCategoryIsOpen={setAddCategoryIsOpen} />
             </RightBar>
@@ -80,6 +125,8 @@ export default function Products(): JSX.Element {
                 <form className={styles.form}>
                     <label className={styles.newLabel}>Product Name*</label>
                     <input className={styles.newInput} placeholder='Name of your product' required />
+                    <label className={styles.newLabel}>Product Image*</label>
+                    <input className={styles.newInput} placeholder='Link to your image' required />
                     <label className={styles.newLabel}>Price*</label>
                     <input className={styles.newInput} type='number' placeholder='0' required />
                     <label className={styles.newLabel}>Amount*</label>

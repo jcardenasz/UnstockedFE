@@ -13,7 +13,7 @@ interface productsSummaryProps {
 function ProductsSummary({ handleEditCategory, categoriesList }: productsSummaryProps): JSX.Element {
 
     return (
-        <div>
+        <div style={{ marginBottom: '20px' }}>
             <div className={styles.summaryContainer}>
                 <SummaryCard title='Total Products' value={0} type='product' />
                 <SummaryCard title='Total Inventory Cost' value={0} type='profit' />

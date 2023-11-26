@@ -61,7 +61,6 @@ function EditCategoryPanel({ categoriesList, setEditCategoryIsOpen, setAddCatego
                 icon: 'success',
                 title: 'Category deleted successfully'
             })
-            // setCategoryName('');
             setEditCategoryIsOpen(false);
         }
     };
@@ -69,7 +68,7 @@ function EditCategoryPanel({ categoriesList, setEditCategoryIsOpen, setAddCatego
     return (
         <div className={styles.rightBarInfoContainer}>
             <ul className={styles.ul}>
-                {categoriesList.map((category: { id: string, name: string }) => (
+                {categoriesList?.map((category: { id: string, name: string }) => (
                     <li className={styles.li} key={category.id}>
                         <p>{category.name}</p>
                         <button onClick={() => { void handleDeleteCategory(category.id) }} className={styles.deleteButton}>
