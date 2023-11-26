@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import styles from './addCategoryForm.module.css';
 
-function AddCategoryForm(): JSX.Element {
+function AddCategoryForm({ setAddCategoryIsOpen }: { setAddCategoryIsOpen: (val: boolean) => void }): JSX.Element {
 
     const [categoryName, setCategoryName] = useState('');
 
@@ -53,6 +53,8 @@ function AddCategoryForm(): JSX.Element {
                 icon: 'success',
                 title: 'Category created successfully'
             })
+            setCategoryName('');
+            setAddCategoryIsOpen(false);
         }
     };
 

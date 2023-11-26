@@ -18,22 +18,37 @@ import AddCategoryForm from '@/components/molecules/addCategoryForm/AddCategoryF
 
 export default function Products(): JSX.Element {
 
-
-
+    // const [categoriesList, setCategoriesList] = useState(['']);
     const [addCategoryIsOpen, setAddCategoryIsOpen] = useState(false);
     const [addProductIsOpen, setAddProductIsOpen] = useState(false);
     const [editCategoryIsOpen, setEditCategoryIsOpen] = useState(false);
 
     const { data: session, status } = useSession();
+    // setCategoriesList(['Op 1', 'Op 2', 'Op 3', 'Op 4', 'Op 5']);
+    const categoriesList: string[] = []
 
-    const categoriesList = ['Op 1', 'Op 2', 'Op 3', 'Op 4', 'Op 5', 'Op 6', 'Op 7', 'Op 8', 'Op 9', 'Op 10'];
+
     console.log({ session, status });
 
-    const categoriesResponse = getCategories().then(result => { return result });
+    let newList: string[] = [];
 
+    // const categoriesList = [''];
 
-    console.log('Categorias: ', categoriesResponse);
+    const categoriesResponse = getCategories().then(
+        (result) => {
+            const resultString = JSON.stringify(result);
+            const resultObj = JSON.parse(resultString);
+            for (let i = 0; i < resultObj.length; i++) {
+                newList = [...newList, resultObj[i].name];
+            }
+            console.log('Last list: ', newList);
+            return newList;
+        }
+    )
 
+    console.log('Categorias Response: ', categoriesResponse);
+
+    console.log('Categorias: ', categoriesList);
 
     const handleAddCategory = (): void => {
         setAddCategoryIsOpen(true);
@@ -53,7 +68,7 @@ export default function Products(): JSX.Element {
             <ProductsSummary handleEditCategory={handleEditCategory} categoriesList={categoriesList} />
             {/* Products grid */}
             <RightBar isOpen={addCategoryIsOpen} setIsOpen={setAddCategoryIsOpen} title='Add Category'>
-                <AddCategoryForm />
+                <AddCategoryForm setAddCategoryIsOpen={setAddCategoryIsOpen} />
             </RightBar>
             <RightBar isOpen={addProductIsOpen} setIsOpen={setAddProductIsOpen} title='Add Product'>
                 <form className={styles.form}>
