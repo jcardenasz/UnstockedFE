@@ -1,0 +1,49 @@
+.rightBarInfoContainer{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ul{
+    width: 100%;
+    margin: 1em 0 1em 0;
+}
+
+.li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 10px 0 10px;
+}
+
+.li:hover{
+    background-color: ghostwhite;
+    cursor: pointer;
+}
+
+
+.newCategorySubmitButton:disabled{
+    background-color: rgb(221, 226, 232);
+    color: black;
+}
+
+.newCategorySubmitButton{
+    border-radius: 12px;
+    margin-top: 40px;
+    width: 100%;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 48px;
+    padding: 12px 24px;
+    background-color: #743EE5;
+    color: white;
+}
+
+.deleteButton:hover{
+    color: red;
+}

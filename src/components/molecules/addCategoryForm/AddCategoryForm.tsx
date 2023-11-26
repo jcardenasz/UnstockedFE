@@ -59,7 +59,7 @@ function AddCategoryForm({ setAddCategoryIsOpen }: { setAddCategoryIsOpen: (val:
     };
 
     return (
-        <form className={styles.form} action='#' onSubmit={handleAddCategorySubmit} >
+        <form className={styles.form} onSubmit={handleAddCategorySubmit} >
             <label className={styles.newLabel}>Category Name*</label>
             <input onChange={(e) => { setCategoryName(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the name of your new category' required />
             <button className={styles.newCategorySubmitButton}>Add category</button>

@@ -2,12 +2,12 @@
 import ProductsHeader from '@/components/atoms/productsHeader/ProductsHeader';
 import ProductsSummary from '@/components/molecules/productsSummary/ProductsSummary';
 import styles from './products.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import RightBar from '@/components/atoms/rightBar/RightBar';
-import { IoIosArrowForward } from 'react-icons/io';
 import { useSession } from 'next-auth/react';
 import { getCategories } from '@/services/category.service';
 import AddCategoryForm from '@/components/molecules/addCategoryForm/AddCategoryForm';
+import EditCategoryPanel from '@/components/molecules/editCategoryPanel/EditCategoryPanel';
 
 // import { useRouter } from 'next/navigation'
 
@@ -18,37 +18,43 @@ import AddCategoryForm from '@/components/molecules/addCategoryForm/AddCategoryF
 
 export default function Products(): JSX.Element {
 
-    // const [categoriesList, setCategoriesList] = useState(['']);
+    const [categoriesList, setCategoriesList] = useState();
     const [addCategoryIsOpen, setAddCategoryIsOpen] = useState(false);
     const [addProductIsOpen, setAddProductIsOpen] = useState(false);
     const [editCategoryIsOpen, setEditCategoryIsOpen] = useState(false);
 
     const { data: session, status } = useSession();
-    // setCategoriesList(['Op 1', 'Op 2', 'Op 3', 'Op 4', 'Op 5']);
-    const categoriesList: string[] = []
-
 
     console.log({ session, status });
 
-    let newList: string[] = [];
+    const newList: any = [];
 
-    // const categoriesList = [''];
+    useEffect(() => {
+        void fetchData();
+    }, [addCategoryIsOpen, editCategoryIsOpen]);
 
-    const categoriesResponse = getCategories().then(
-        (result) => {
-            const resultString = JSON.stringify(result);
-            const resultObj = JSON.parse(resultString);
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    const fetchData = async () => {
+        try {
+            console.log('Categories list: ', categoriesList);
+            const response = await getCategories();
+            const resultStr = JSON.stringify(response);
+            const resultObj = JSON.parse(resultStr);
+            console.log('Lista de categorias: ', resultObj)
             for (let i = 0; i < resultObj.length; i++) {
-                newList = [...newList, resultObj[i].name];
+                // console.log('new list before push: ', newList);
+                newList.push({ id: resultObj[i]._id, name: resultObj[i].name })
+                // console.log('new list after push: ', newList);
+                // newList = [...newList, ];
             }
-            console.log('Last list: ', newList);
-            return newList;
+            setCategoriesList(newList);
+            console.log('new list after push: ', newList);
+            console.log('Categories list after fetch: ', categoriesList);
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-    )
+    }
 
-    console.log('Categorias Response: ', categoriesResponse);
-
-    console.log('Categorias: ', categoriesList);
 
     const handleAddCategory = (): void => {
         setAddCategoryIsOpen(true);
@@ -84,14 +90,7 @@ export default function Products(): JSX.Element {
                 </form>
             </RightBar>
             <RightBar isOpen={editCategoryIsOpen} setIsOpen={setEditCategoryIsOpen} title='Edit Category'>
-                <div className={styles.rightBarInfoContainer}>
-                    <ul className={styles.ul}>
-                        {categoriesList.map(category => (
-                            <li className={styles.li} key={category}><p>{category}</p><IoIosArrowForward /></li>
-                        ))}
-                    </ul>
-                    <button className={styles.newCategorySubmitButton}>Create category</button>
-                </div>
+                <EditCategoryPanel setAddCategoryIsOpen={setAddCategoryIsOpen} setEditCategoryIsOpen={setEditCategoryIsOpen} categoriesList={categoriesList} />
             </RightBar>
         </>
     )

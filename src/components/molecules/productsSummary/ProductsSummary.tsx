@@ -7,7 +7,7 @@ import { FaPencilAlt } from 'react-icons/fa';
 
 interface productsSummaryProps {
     handleEditCategory: () => void,
-    categoriesList: string[],
+    categoriesList: any,
 }
 
 function ProductsSummary({ handleEditCategory, categoriesList }: productsSummaryProps): JSX.Element {
@@ -21,9 +21,9 @@ function ProductsSummary({ handleEditCategory, categoriesList }: productsSummary
             <div className={styles.searchBarContainer}>
                 <button onClick={handleEditCategory} className={styles.editCategoriesButton}><FaPencilAlt />Categories</button>
                 <select className={styles.selectCategory}>
-                    <option>All categories</option>
-                    {categoriesList.map((category) =>
-                        <option key={category}>{category}</option>
+                    <option key={0}>All categories</option>
+                    {categoriesList?.map((category: { id: string, name: string }) =>
+                        <option key={category.id}>{category.name}</option>
                     )}
                 </select>
                 <SearchBar />
