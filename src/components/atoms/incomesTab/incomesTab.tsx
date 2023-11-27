@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useEffect, useState } from 'react';
 import styles from '@/components/atoms/incomesTab/incomesTab.module.css';
@@ -24,8 +25,9 @@ function IncomesTab(): JSX.Element {
                     id: resultObj[i]._id,
                     name: resultObj[i].name,
                     description: resultObj[i].description,
-                    date: resultObj[i].stock,
-                    saleAmount: resultObj[i].picture,
+                    PaymentMethod: resultObj[i].PaymentMethod,
+                    date: resultObj[i].date,
+                    saleAmount: resultObj[i].saleAmount,
                 })
                 newSales += (parseInt(resultObj[i].saleAmount));
             }
@@ -54,11 +56,11 @@ function IncomesTab(): JSX.Element {
                 </thead>
                 <tbody>
                     {data?.map((data: { id: string, name: string, saleAmount: number, paymentMethod:string, date: string }) => (
-                        <tr className="table" key={''}>
-                            <th>{data.name}nom</th>
-                            <th>{data.saleAmount}$</th>
-                            <th>{data.paymentMethod}tk</th>
-                            <th>{data.date}dt</th>
+                        <tr className={styles.tableRow} key={data.id}>
+                            <td>{data.name}</td> {/* Concept */}
+                            <td>{data.saleAmount}</td> {/* Value */}
+                            <td>{data.paymentMethod}</td> {/* Payment Method */}
+                            <td>{data.date}</td> {/* Date */}
                         </tr>
                     ))}
                 </tbody>

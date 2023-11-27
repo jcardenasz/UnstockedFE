@@ -1,4 +1,4 @@
-export async function getExpenseses(): Promise<Response> {
+export async function getExpenses(): Promise<Response> {
 
     const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/transactions/gExpenses`, {
         method: 'GET',
