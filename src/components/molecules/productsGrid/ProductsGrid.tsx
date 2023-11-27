@@ -6,7 +6,7 @@ import RightBar from '@/components/atoms/rightBar/RightBar';
 import ProductSummaryRightBar from '../productSummaryRightBar/ProductSummaryRightBar';
 import { getProduct, getProducts } from '@/services/product.service';
 import DeleteProductPanel from '@/components/atoms/deleteProductPanel/DeleteProductPanel';
-import ProductForm from '../addProductForm/ProductForm';
+import ProductForm from '@/components/molecules/addProductForm/ProductForm';
 
 interface ProducstGridProps {
     addProductIsOpen: boolean,
