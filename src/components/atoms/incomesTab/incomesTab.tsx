@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '@/components/atoms/incomesTab/incomesTab.module.css';
 import {getSales} from '@/services/sale.service';
 
@@ -7,7 +7,9 @@ function IncomesTab(): JSX.Element {
     
     const newSalesList: any = [];
 
-    const [data, setData] = useState([]);
+    const [data, setSales] = useState([]);
+    const [totalSales, setTotalSales] = useState(0);
+
 
     const fetchSalesData = async () => {
         try {
@@ -16,8 +18,6 @@ function IncomesTab(): JSX.Element {
             const resultStr = JSON.stringify(response);
             const resultObj = JSON.parse(resultStr);
             let newSales = 0;
-            let newCosts = 0;
-            let balance = 0;
             console.log('Sales: ', resultObj);
             for (let i = 0; i < resultObj.length; i++) {
                 newSalesList.push({
@@ -27,16 +27,18 @@ function IncomesTab(): JSX.Element {
                     date: resultObj[i].stock,
                     saleAmount: resultObj[i].picture,
                 })
-                newCosts += (parseInt(resultObj[i].price) * parseInt(resultObj[i].stock));
-                balance += parseInt(resultObj[i].stock);
+                newSales += (parseInt(resultObj[i].saleAmount));
             }
-            setTotalProducts(newStock);
-            setTotalCost(newCost);
-            setProductsList(newProductsList);
+            setTotalSales(newSales);
+            setSales(newSalesList);
         } catch (error) {
             console.error('Error fetching producst data:', error);
         }
     }
+
+    void fetchSalesData();
+            void setSales(newSalesList);
+    }, []);
 
     return (
         <div className={styles.tableContainer}>
@@ -50,12 +52,12 @@ function IncomesTab(): JSX.Element {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.name}</td>
-                            <td>{item.saleAmount}</td>
-                            <td>{item.paymentMethod}</td>
-                            <td>{item.date}</td>
+                    {data?.map((data: { id: string, name: string, saleAmount: number, paymentMethod:string, date: string }) => (
+                        <tr key={''}>
+                            <td>{data.name}</td>
+                            <td>{data.saleAmount}</td>
+                            <td>{data.paymentMethod}</td>
+                            <td>{data.date}</td>
                         </tr>
                     ))}
                 </tbody>
