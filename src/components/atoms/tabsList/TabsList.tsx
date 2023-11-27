@@ -29,9 +29,9 @@ function TabsList(): JSX.Element {
             <span className={bottomBarStyles}></span>
             <div>
                 {isIncomesSelected ? (
-                    <><p>This is the content for the Incomes tab.</p><IncomesTab/></>
+                    <><IncomesTab/></>
                 ) : (
-                    <><p>This is the content for the Expenses tab.</p><ExpensesTab /></>
+                    <><ExpensesTab /></>
                 )}
             </div>
         </div>

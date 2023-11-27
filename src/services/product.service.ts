@@ -1,6 +1,6 @@
 export async function getProducts(): Promise<Response> {
 
-    const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/products`, {
+    const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -12,7 +12,7 @@ export async function getProducts(): Promise<Response> {
 
 export async function getProduct(id: string): Promise<Response> {
 
-    const product = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/products/${id}`, {
+    const product = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/${id}`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -24,7 +24,7 @@ export async function getProduct(id: string): Promise<Response> {
 
 export async function addProduct(name: string, description: string, stock: number, picture: string, price: number, category: string): Promise<Response> {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/products`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`, {
         method: "POST",
         credentials: 'include',
         headers: {
@@ -45,7 +45,7 @@ export async function addProduct(name: string, description: string, stock: numbe
 
 export async function updateProduct(id: string, name: string, description: string, stock: number, picture: string, price: number, category: string): Promise<Response> {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/products/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/${id}`, {
         method: "PUT",
         credentials: 'include',
         headers: {
@@ -65,7 +65,7 @@ export async function updateProduct(id: string, name: string, description: strin
 }
 
 export async function deleteProduct(id: string): Promise<Response> {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/products/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/${id}`, {
         method: "DELETE",
         credentials: 'include',
         headers: {

@@ -1,6 +1,6 @@
 export async function getSales(): Promise<Response> {
 
-    const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/transactions/gSales`, {
+    const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/transactions/gSales`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -12,7 +12,7 @@ export async function getSales(): Promise<Response> {
 
 export async function addSale(name: string, description:string, paymentMethod: string, saleAmount: number,stock: number): Promise<Response> {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/transactions/cSale`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/transactions/cSale`, {
         method: "POST",
         credentials: 'include',
         headers: {

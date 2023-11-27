@@ -3,7 +3,7 @@ import { type SignInResponse, signIn } from 'next-auth/react'
 
 export async function loginUser(email: string, password: string): Promise<SignInResponse> {
 
-    void fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/login`, {
+    void fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify({ email, password }),

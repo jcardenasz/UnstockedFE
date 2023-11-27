@@ -1,6 +1,6 @@
 export async function getCategories(): Promise<Response> {
 
-    const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/categories`, {
+    const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -12,7 +12,7 @@ export async function getCategories(): Promise<Response> {
 
 export async function addCategory(name: string): Promise<Response> {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/categories`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`, {
         method: "POST",
         credentials: 'include',
         headers: {
@@ -28,7 +28,7 @@ export async function addCategory(name: string): Promise<Response> {
 }
 
 export async function deleteCategory(id: string): Promise<Response> {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/categories/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories/${id}`, {
         method: "DELETE",
         credentials: 'include',
         headers: {
