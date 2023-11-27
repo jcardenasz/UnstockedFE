@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     top: 72px;
+    margin-bottom: 72px;
     position: relative;
     width: 240px;
     height: -webkit-fill-available;
