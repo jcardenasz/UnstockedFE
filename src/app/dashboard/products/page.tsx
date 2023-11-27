@@ -9,7 +9,7 @@ import { getCategories } from '@/services/category.service';
 import AddCategoryForm from '@/components/molecules/addCategoryForm/AddCategoryForm';
 import EditCategoryPanel from '@/components/molecules/editCategoryPanel/EditCategoryPanel';
 import ProductsGrid from '@/components/molecules/productsGrid/ProductsGrid';
-import ProductForm from '@/components/molecules/addProductForm/ProductForm';
+import ProductForm from '@/components/molecules/productForm/ProductForm';
 
 // import { useRouter } from 'next/navigation'
 
