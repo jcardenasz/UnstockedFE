@@ -1,0 +1,59 @@
+.infoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+.important{
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    margin: 8px 0px;
+    padding: 0px;
+    color: rgb(26, 39, 50);
+    text-transform: none;
+}
+
+.text{
+    font-size: 0.85rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    margin: 8px 0px;
+    padding: 0px 20px;
+    color: rgb(26, 39, 50);
+    text-transform: none;
+}
+
+.deleteButton{
+    border-radius: 12px;
+    box-shadow: none;
+    margin: 0px;
+    height: 48px;
+    width: 100%;
+    padding: 12px 24px;
+    margin: 16px 0;
+    background-color: rgb(255, 226, 224);
+    border: 2px solid rgb(204, 62, 51);
+}
+
+
+.goBackButton{
+    border-radius: 12px;
+    box-shadow: none;
+    margin: 0px;
+    height: 48px;
+    width: 100%;
+    padding: 12px 24px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(26, 39, 50);
+}
+
+.goBackButton:hover{
+    background-color: ghostwhite;
+}

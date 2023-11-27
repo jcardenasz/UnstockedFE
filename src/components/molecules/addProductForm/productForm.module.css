@@ -27,6 +27,7 @@
 .newTextArea{
     flex: 1 1;
     width: 100%;
+    min-height: 120px;
     max-height: 220px;
     color: rgb(26, 39, 50);
     border-radius: 0.25rem;
@@ -52,6 +53,7 @@
 .newCategorySubmitButton{
     border-radius: 12px;
     margin-top: 40px;
+    margin-bottom: 20px;
     width: 100%;
     display: inline-flex;
     -webkit-box-align: center;
@@ -67,4 +69,19 @@
 .newCategorySubmitButton:disabled{
     background-color: rgb(221, 226, 232);
     color: black;
+}
+
+.goBackButton{
+    border-radius: 12px;
+    box-shadow: none;
+    margin: 0;
+    height: 48px;
+    width: 100%;
+    padding: 12px 24px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(26, 39, 50);
+}
+
+.goBackButton:hover{
+    background-color: ghostwhite;
 }

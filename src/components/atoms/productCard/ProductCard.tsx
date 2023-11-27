@@ -3,22 +3,28 @@ import Image from 'next/image';
 import styles from './productCard.module.css';
 
 interface ProductCardProps {
-    imageLink: string,
-    price: number,
-    productName: string,
-    stock: number,
+    product: any,
+    productId: string,
+    setProductSummaryIsOpen: (val: boolean) => void,
+    setIdProductSelected: (val: any) => void,
 }
 
-function ProductCard({ imageLink, price, productName, stock }: ProductCardProps): JSX.Element {
+function ProductCard({ product, productId, setProductSummaryIsOpen, setIdProductSelected }: ProductCardProps): JSX.Element {
+
+    const clickHandler = (): void => {
+        setProductSummaryIsOpen(true);
+        setIdProductSelected(productId);
+    }
+
     return (
-        <div className={styles.productCard}>
+        <div onClick={clickHandler} className={styles.productCard}>
             <div>
-                <Image className={styles.img} width={80} height={80} src={imageLink} alt={''} />
+                <Image className={styles.img} width={80} height={80} src={product?.picture} alt={''} />
             </div>
             <div>
-                <p className={styles.price}>${price?.toLocaleString('de-De')}</p>
-                <h3 className={styles.productName}>{productName}</h3>
-                <p className={styles.stock}>{stock} Disponibles</p>
+                <p className={styles.price}>${product?.price?.toLocaleString('de-DE')}</p>
+                <h3 className={styles.productName}>{product?.name}</h3>
+                <p className={styles.stock}>{product?.stock?.toLocaleString('de-DE')} Available</p>
             </div>
         </div>
     )

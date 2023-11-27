@@ -9,8 +9,7 @@ import { getCategories } from '@/services/category.service';
 import AddCategoryForm from '@/components/molecules/addCategoryForm/AddCategoryForm';
 import EditCategoryPanel from '@/components/molecules/editCategoryPanel/EditCategoryPanel';
 import ProductsGrid from '@/components/molecules/productsGrid/ProductsGrid';
-import AddProductForm from '@/components/molecules/addProductForm/AddProductForm';
-import { getProducts } from '@/services/product.service';
+import ProductForm from '@/components/molecules/addProductForm/ProductForm';
 
 // import { useRouter } from 'next/navigation'
 
@@ -22,7 +21,7 @@ import { getProducts } from '@/services/product.service';
 export default function Products(): JSX.Element {
 
     const [categoriesList, setCategoriesList] = useState();
-    const [productsList, setProductsList] = useState();
+
     const [totalProducts, setTotalProducts] = useState(0);
     const [totalCost, setTotalCost] = useState(0);
     const [addCategoryIsOpen, setAddCategoryIsOpen] = useState(false);
@@ -54,11 +53,10 @@ export default function Products(): JSX.Element {
     console.log({ session, status });
 
     const newCategoriesList: any = [];
-    const newProductsList: any = [];
+
 
     useEffect(() => {
         void fetchCategoriesData();
-        void fetchProductsData();
     }, [addCategoryIsOpen, editCategoryIsOpen, addProductIsOpen]);
 
 
@@ -76,36 +74,6 @@ export default function Products(): JSX.Element {
         }
     }
 
-    const fetchProductsData = async () => {
-        try {
-            const response = await getProducts();
-            console.log('Response: ', response);
-            const resultStr = JSON.stringify(response);
-            const resultObj = JSON.parse(resultStr);
-            let newCost = 0;
-            let newStock = 0;
-            console.log('Products: ', resultObj);
-            for (let i = 0; i < resultObj.length; i++) {
-                newProductsList.push({
-                    id: resultObj[i]._id,
-                    name: resultObj[i].name,
-                    description: resultObj[i].description,
-                    stock: resultObj[i].stock,
-                    picture: resultObj[i].picture,
-                    price: resultObj[i].price,
-                })
-                newStock += parseInt(resultObj[i].stock);
-                newCost += (parseInt(resultObj[i].price) * parseInt(resultObj[i].stock));
-            }
-            setTotalProducts(newStock);
-            setTotalCost(newCost);
-            setProductsList(newProductsList);
-        } catch (error) {
-            console.error('Error fetching producst data:', error);
-        }
-    }
-
-
     const handleAddCategory = (): void => {
         setAddCategoryIsOpen(true);
     }
@@ -122,12 +90,12 @@ export default function Products(): JSX.Element {
         <>
             <ProductsHeader handleAddCategory={handleAddCategory} handleAddProduct={handleAddProduct} />
             <ProductsSummary handleEditCategory={handleEditCategory} categoriesList={categoriesList} totalProducts={totalProducts} totalCost={totalCost} />
-            <ProductsGrid productsList={productsList} />
+            <ProductsGrid categoriesList={categoriesList} addProductIsOpen={addProductIsOpen} setTotalProducts={setTotalProducts} setTotalCost={setTotalCost} />
             <RightBar isOpen={addCategoryIsOpen} setIsOpen={setAddCategoryIsOpen} title='Add Category'>
                 <AddCategoryForm setAddCategoryIsOpen={setAddCategoryIsOpen} />
             </RightBar>
             <RightBar isOpen={addProductIsOpen} setIsOpen={setAddProductIsOpen} title='Add Product'>
-                <AddProductForm categoriesList={categoriesList} setAddProductIsOpen={setAddProductIsOpen} />
+                <ProductForm categoriesList={categoriesList} setAddProductIsOpen={setAddProductIsOpen} />
             </RightBar>
             <RightBar isOpen={editCategoryIsOpen} setIsOpen={setEditCategoryIsOpen} title='Edit Category'>
                 <EditCategoryPanel setAddCategoryIsOpen={setAddCategoryIsOpen} setEditCategoryIsOpen={setEditCategoryIsOpen} categoriesList={categoriesList} />
