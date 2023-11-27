@@ -12,11 +12,15 @@ import { CiBoxes } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaSignOutAlt } from "react-icons/fa";
 import BusinessCard from "@/components/atoms/businessCard/BusinessCard";
+import { usePathname } from "next/navigation";
 
 function DashboardNavigation(): JSX.Element {
 
-    const [itemActive, setItemActive] = useState('');
+    const route = usePathname();
+    const parts = route.split("/");
+    const lastWord = parts[parts.length - 1];
 
+    const [itemActive, setItemActive] = useState(lastWord);
 
     return (
         <nav className={styles.dashboardNavigation}>
