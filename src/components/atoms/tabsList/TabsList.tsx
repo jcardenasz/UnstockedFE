@@ -1,7 +1,8 @@
 'use client'
-
 import React, { useState } from 'react';
 import styles from './tabsList.module.css';
+import IncomesTab from '@/components/atoms/incomesTab/incomesTab';
+import ExpensesTab from '@/components/atoms/expensesTab/expensesTab'
 
 function TabsList(): JSX.Element {
 
@@ -15,6 +16,7 @@ function TabsList(): JSX.Element {
     const bottomBarStyles = `${styles.bottomBar} ${bottomBarSelected}`;
 
     return (
+        <div>
         <div style={{ padding: '0px 24px' }}>
             <div className={styles.container}>
                 <div onClick={() => { setIsIncomesSelected(true); setIsExpensesSelected(false) }} className={stylesIncomesTab}>
@@ -25,6 +27,14 @@ function TabsList(): JSX.Element {
                 </div>
             </div>
             <span className={bottomBarStyles}></span>
+            <div>
+                {isIncomesSelected ? (
+                    <><p>This is the content for the Incomes tab.</p><IncomesTab/></>
+                ) : (
+                    <><p>This is the content for the Expenses tab.</p><ExpensesTab /></>
+                )}
+            </div>
+        </div>
         </div>
 
     )
