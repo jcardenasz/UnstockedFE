@@ -33,12 +33,12 @@ function SummaryCard({ title, value, type }: { title: string, value: number, typ
         case 'product':
             validationType = styles.product;
             validationTypeText = styles.productText;
-            text = value.toLocaleString('de-DE');
+            text = `${value.toLocaleString('de-DE')}`;;
             break;
         default:
             validationType = styles.product;
             validationTypeText = styles.productText;
-            text = value.toLocaleString('de-DE');
+            text = `$${value.toLocaleString('de-DE')}`;;
             break;
 
     }

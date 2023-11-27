@@ -28,7 +28,7 @@ function AddExpenseForm({ setAddExpenseIsOpen }: { setAddExpenseIsOpen: (val: bo
 
     const handleAddExpenseSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-        const res = await addExpense(ExpenseName, ExpenseDescription, ExpensePaymentMethod, Number(ExpenseAmount),ExpenseSupplier);
+        const res = await addExpense(ExpenseName, ExpenseDescription, ExpensePaymentMethod, Number(ExpenseAmount), ExpenseSupplier);
         let data;
 
         if (res.status !== 500) {
@@ -65,22 +65,18 @@ function AddExpenseForm({ setAddExpenseIsOpen }: { setAddExpenseIsOpen: (val: bo
 
     return (
         <form className={styles.form} onSubmit={handleAddExpenseSubmit} >
-            <div>
-                <label className={styles.newLabel}>Expense Name*</label>
-                <input onChange={(e) => { setExpenseName(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the name of your new Expense' required />
-                <label className={styles.newLabel}>Payment Method*</label>
-            </div>
-            <PaymentMethodGrid />
-            <div>
-            <input onChange={(e) => { setExpensePaymentMethod(e.target.value); }} className={styles.newInput} type='text' placeholder='Write one of the options' required />
-                <label className={styles.newLabel}>Amount*</label>
-                <input onChange={(e) => { setExpenseAmount(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
-                <label className={styles.newLabel}>Supplier*</label>
-                <input onChange={(e) => { setExpenseSupplier(e.target.value); }} className={styles.newInput} type='text' placeholder='Writte the supplier' required />
-                <label className={styles.newLabel}>Description*</label>
-                <input onChange={(e) => { setExpenseDescription(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the description of your new Expense' required />
-                <button className={styles.newExpenseSubmitButton} type="submit">Add Expense</button>
-            </div>
+            <label className={styles.newLabel}>Expense Name*</label>
+            <input onChange={(e) => { setExpenseName(e.target.value); }} className={styles.newInput} type='text' placeholder='Name of your new Expense' required />
+            <label className={styles.newLabel}>Payment Method*</label>
+            <PaymentMethodGrid setExpensePaymentMethod={setExpensePaymentMethod} />
+            <input hidden className={styles.newInput} type='text' placeholder='' value={ExpensePaymentMethod} required />
+            <label className={styles.newLabel}>Amount*</label>
+            <input onChange={(e) => { setExpenseAmount(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
+            <label className={styles.newLabel}>Supplier*</label>
+            <input onChange={(e) => { setExpenseSupplier(e.target.value); }} className={styles.newInput} type='text' placeholder='Writte the supplier' required />
+            <label className={styles.newLabel}>Description*</label>
+            <input onChange={(e) => { setExpenseDescription(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the description of your new Expense' required />
+            <button className={styles.newExpenseSubmitButton} type="submit">Add Expense</button>
         </form>
     )
 }

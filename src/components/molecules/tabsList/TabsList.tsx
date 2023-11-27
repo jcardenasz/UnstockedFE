@@ -4,7 +4,11 @@ import styles from './tabsList.module.css';
 import IncomesTab from '@/components/atoms/incomesTab/incomesTab';
 import ExpensesTab from '@/components/atoms/expensesTab/expensesTab'
 
-function TabsList(): JSX.Element {
+interface TabsListProps {
+    sales: any,
+    expenses: any
+}
+function TabsList({ sales, expenses }: TabsListProps): JSX.Element {
 
     const [isIncomesSelected, setIsIncomesSelected] = useState(true);
     const [isExpensesSelected, setIsExpensesSelected] = useState(false);
@@ -16,7 +20,6 @@ function TabsList(): JSX.Element {
     const bottomBarStyles = `${styles.bottomBar} ${bottomBarSelected}`;
 
     return (
-        <div>
         <div style={{ padding: '0px 24px' }}>
             <div className={styles.container}>
                 <div onClick={() => { setIsIncomesSelected(true); setIsExpensesSelected(false) }} className={stylesIncomesTab}>
@@ -27,16 +30,12 @@ function TabsList(): JSX.Element {
                 </div>
             </div>
             <span className={bottomBarStyles}></span>
-            <div>
-                {isIncomesSelected ? (
-                    <><IncomesTab/></>
-                ) : (
-                    <><ExpensesTab /></>
-                )}
-            </div>
+            {isIncomesSelected ? (
+                <IncomesTab sales={sales} />
+            ) : (
+                <ExpensesTab expenses={expenses} />
+            )}
         </div>
-        </div>
-
     )
 }
 
