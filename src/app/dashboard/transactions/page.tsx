@@ -6,7 +6,7 @@ import FiltersBar from '@/components/molecules/filtersBar/FiltersBar';
 import TransactionsSummary from '@/components/molecules/transactionsSummary/TransactionsSummary';
 import React, { useEffect, useState } from 'react';
 import RightBar from '@/components/atoms/rightBar/RightBar';
-import AddSaleForm from '@/components/molecules/addSaleForm/AddSaleForm';
+import AddSaleForm from '@/components/molecules/addSaleForm/addSaleForm';
 import AddExpenseForm from '@/components/molecules/addExpenseForm/addExpenseForm';
 import { getSales } from '@/services/sale.service';
 import { getExpenses } from '@/services/expense.service';
