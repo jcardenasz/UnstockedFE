@@ -7,8 +7,6 @@ import styles from './addCategoryForm.module.css';
 
 function AddCategoryForm({ setAddCategoryIsOpen }: { setAddCategoryIsOpen: (val: boolean) => void }): JSX.Element {
 
-    const [categoryName, setCategoryName] = useState('');
-
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -20,6 +18,8 @@ function AddCategoryForm({ setAddCategoryIsOpen }: { setAddCategoryIsOpen: (val:
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
     })
+
+    const [categoryName, setCategoryName] = useState('');
 
     const handleAddCategorySubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();

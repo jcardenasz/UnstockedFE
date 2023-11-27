@@ -23,22 +23,22 @@ function SummaryCard({ title, value, type }: { title: string, value: number, typ
         case 'profit':
             validationType = styles.profit;
             validationTypeText = styles.profitText;
-            text = `$${value}`;
+            text = `$${value.toLocaleString('de-DE')}`;
             break;
         case 'loss':
             validationType = styles.loss;
             validationTypeText = styles.lossText;
-            text = `$${value}`;
+            text = `$${value.toLocaleString('de-DE')}`;
             break;
         case 'product':
             validationType = styles.product;
             validationTypeText = styles.productText;
-            text = value;
+            text = value.toLocaleString('de-DE');
             break;
         default:
             validationType = styles.product;
             validationTypeText = styles.productText;
-            text = value;
+            text = value.toLocaleString('de-DE');
             break;
 
     }

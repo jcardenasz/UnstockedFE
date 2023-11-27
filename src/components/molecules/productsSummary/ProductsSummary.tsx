@@ -8,15 +8,17 @@ import { FaPencilAlt } from 'react-icons/fa';
 interface productsSummaryProps {
     handleEditCategory: () => void,
     categoriesList: any,
+    totalProducts: number,
+    totalCost: number
 }
 
-function ProductsSummary({ handleEditCategory, categoriesList }: productsSummaryProps): JSX.Element {
+function ProductsSummary({ handleEditCategory, categoriesList, totalProducts, totalCost }: productsSummaryProps): JSX.Element {
 
     return (
         <div style={{ marginBottom: '20px' }}>
             <div className={styles.summaryContainer}>
-                <SummaryCard title='Total Products' value={0} type='product' />
-                <SummaryCard title='Total Inventory Cost' value={0} type='profit' />
+                <SummaryCard title='Total Products' value={totalProducts} type='product' />
+                <SummaryCard title='Total Inventory Cost' value={totalCost} type='profit' />
             </div>
             <div className={styles.searchBarContainer}>
                 <button onClick={handleEditCategory} className={styles.editCategoriesButton}><FaPencilAlt />Categories</button>
