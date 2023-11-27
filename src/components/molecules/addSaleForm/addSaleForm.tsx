@@ -10,9 +10,9 @@ function AddSaleForm({ setAddSaleIsOpen }: { setAddSaleIsOpen: (val: boolean) =>
 
     const [saleName, setSaleName] = useState('');
     const [saleDescription, setSaleDescription] = useState('');
-    const [salePaymentMethod] = useState('');
+    const [salePaymentMethod, setSalePaymentMethod] = useState('');
     const [saleAmount, setSaleAmount] = useState('');
-    const [salePrice, setSalePrice] = useState('');
+    const [saleStock, setSaleStock] = useState('');
 
     const Toast = Swal.mixin({
         toast: true,
@@ -28,7 +28,7 @@ function AddSaleForm({ setAddSaleIsOpen }: { setAddSaleIsOpen: (val: boolean) =>
 
     const handleAddSaleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-        const res = await addSale(saleName, saleDescription, salePaymentMethod, Number(saleAmount), Number(salePrice));
+        const res = await addSale(saleName, salePaymentMethod, saleDescription, Number(saleAmount), Number(saleStock));
         let data;
 
         if (res.status !== 500) {
@@ -56,7 +56,7 @@ function AddSaleForm({ setAddSaleIsOpen }: { setAddSaleIsOpen: (val: boolean) =>
         if ((res).ok) {
             void Toast.fire({
                 icon: 'success',
-                title: 'Category created successfully'
+                title: 'Sale created successfully'
             })
             setSaleName('');
             setAddSaleIsOpen(false);
@@ -74,13 +74,14 @@ function AddSaleForm({ setAddSaleIsOpen }: { setAddSaleIsOpen: (val: boolean) =>
                 <PaymentMethodGrid />
             </div>
             <div>
-                <label className={styles.newLabel}>Value*</label>
-                <input onChange={(e) => { setSalePrice(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
-                <label className={styles.newLabel}>Amount*</label>
-                <input onChange={(e) => { setSaleAmount(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
+                <input onChange={(e) => { setSalePaymentMethod(e.target.value); }} className={styles.newInput} type='text' placeholder='Write one of the options' required />
+                <label className={styles.newLabel}>Amount of the sale*</label>
+                <input onChange={(e) => { setSaleAmount(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required/>
+                <label className={styles.newLabel}>Amount of stock*</label>
+                <input onChange={(e) => { setSaleStock(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
                 <label className={styles.newLabel}>Description*</label>
                 <input onChange={(e) => { setSaleDescription(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the description of your new sale' required />
-                <button className={styles.newSaleSubmitButton}>Add sale</button>
+                <button className={styles.newSaleSubmitButton} type= "submit">Add sale</button>
             </div>
         </form>
     )

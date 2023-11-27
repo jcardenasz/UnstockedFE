@@ -10,9 +10,9 @@ function AddExpenseForm({ setAddExpenseIsOpen }: { setAddExpenseIsOpen: (val: bo
 
     const [ExpenseName, setExpenseName] = useState('');
     const [ExpenseDescription, setExpenseDescription] = useState('');
-    const [ExpensePaymentMethod] = useState('');
+    const [ExpensePaymentMethod, setExpensePaymentMethod] = useState('');
     const [ExpenseSupplier, setExpenseSupplier] = useState('');
-    const [ExpensePrice, setExpensePrice] = useState('');
+    const [ExpenseAmount, setExpenseAmount] = useState('');
 
     const Toast = Swal.mixin({
         toast: true,
@@ -28,7 +28,7 @@ function AddExpenseForm({ setAddExpenseIsOpen }: { setAddExpenseIsOpen: (val: bo
 
     const handleAddExpenseSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-        const res = await addExpense(ExpenseName, ExpenseDescription, ExpensePaymentMethod, Number(ExpensePrice),ExpenseSupplier);
+        const res = await addExpense(ExpenseName, ExpenseDescription, ExpensePaymentMethod, Number(ExpenseAmount),ExpenseSupplier);
         let data;
 
         if (res.status !== 500) {
@@ -56,7 +56,7 @@ function AddExpenseForm({ setAddExpenseIsOpen }: { setAddExpenseIsOpen: (val: bo
         if ((res).ok) {
             void Toast.fire({
                 icon: 'success',
-                title: 'Category created successfully'
+                title: 'Expense created successfully'
             })
             setExpenseName('');
             setAddExpenseIsOpen(false);
@@ -72,15 +72,15 @@ function AddExpenseForm({ setAddExpenseIsOpen }: { setAddExpenseIsOpen: (val: bo
             </div>
             <PaymentMethodGrid />
             <div>
+            <input onChange={(e) => { setExpensePaymentMethod(e.target.value); }} className={styles.newInput} type='text' placeholder='Write one of the options' required />
                 <label className={styles.newLabel}>Amount*</label>
-                <input onChange={(e) => { setExpensePrice(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
+                <input onChange={(e) => { setExpenseAmount(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
                 <label className={styles.newLabel}>Supplier*</label>
                 <input onChange={(e) => { setExpenseSupplier(e.target.value); }} className={styles.newInput} type='text' placeholder='Writte the supplier' required />
                 <label className={styles.newLabel}>Description*</label>
                 <input onChange={(e) => { setExpenseDescription(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the description of your new Expense' required />
+                <button className={styles.newExpenseSubmitButton} type="submit">Add Expense</button>
             </div>
-            
-            <button className={styles.newExpenseSubmitButton}>Add Expense</button>
         </form>
     )
 }

@@ -10,9 +10,9 @@ export async function getExpenseses(): Promise<Response> {
     return await categories.json()
 }
 
-export async function addExpense(name: string, description:string, paymentMethod: string, ExpenseAmount: number, supplier: string): Promise<Response> {
+export async function addExpense(name: string, description:string, paymentMethod: string, expenseAmount: number, supplier: string): Promise<Response> {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/categories/cExpense`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_DEV}/transactions/cExpense`, {
         method: "POST",
         credentials: 'include',
         headers: {
@@ -21,9 +21,8 @@ export async function addExpense(name: string, description:string, paymentMethod
         body: JSON.stringify({
             name,
 			paymentMethod,
-            date: 'Default Date',
             supplier,
-			ExpenseAmount,
+			expenseAmount,
             description: 'Default Description'
         }),
     });
