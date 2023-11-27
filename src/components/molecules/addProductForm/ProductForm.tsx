@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 import React, { useState } from 'react';
-import styles from '@/components/molecules/addProductForm/ProductForm.module.css';
+import styles from './productForm.module.css';
 import Swal from 'sweetalert2';
 import { addProduct, updateProduct } from '@/services/product.service';
 
