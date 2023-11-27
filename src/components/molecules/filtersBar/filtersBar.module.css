@@ -1,6 +1,7 @@
 .container{
     display: flex;
     justify-content: center;
+    position: relative;
     margin: 10px 15px;
     padding: 10px;
     width: -webkit-fill-available;

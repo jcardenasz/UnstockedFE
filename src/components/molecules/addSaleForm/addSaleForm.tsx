@@ -11,8 +11,7 @@ function AddSaleForm({ setAddSaleIsOpen }: { setAddSaleIsOpen: (val: boolean) =>
     const [saleName, setSaleName] = useState('');
     const [saleDescription, setSaleDescription] = useState('');
     const [salePaymentMethod, setSalePaymentMethod] = useState('');
-    const [saleAmount, setSaleAmount] = useState('');
-    const [saleStock, setSaleStock] = useState('');
+    const [saleAmount, setSaleAmount] = useState(0);
 
     const Toast = Swal.mixin({
         toast: true,
@@ -28,7 +27,7 @@ function AddSaleForm({ setAddSaleIsOpen }: { setAddSaleIsOpen: (val: boolean) =>
 
     const handleAddSaleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-        const res = await addSale(saleName, salePaymentMethod, saleDescription, Number(saleAmount), Number(saleStock));
+        const res = await addSale(saleName, saleDescription, salePaymentMethod, saleAmount);
         let data;
 
         if (res.status !== 500) {
@@ -65,24 +64,16 @@ function AddSaleForm({ setAddSaleIsOpen }: { setAddSaleIsOpen: (val: boolean) =>
 
     return (
         <form className={styles.form} onSubmit={handleAddSaleSubmit} >
-            <div>
-                <label className={styles.newLabel}>Sale Name*</label>
-                <input onChange={(e) => { setSaleName(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the name of your new sale' required />
-                <label className={styles.newLabel}>Payment Method*</label>
-            </div>
-            <div>  
-                <PaymentMethodGrid />
-            </div>
-            <div>
-                <input onChange={(e) => { setSalePaymentMethod(e.target.value); }} className={styles.newInput} type='text' placeholder='Write one of the options' required />
-                <label className={styles.newLabel}>Amount of the sale*</label>
-                <input onChange={(e) => { setSaleAmount(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required/>
-                <label className={styles.newLabel}>Amount of stock*</label>
-                <input onChange={(e) => { setSaleStock(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
-                <label className={styles.newLabel}>Description*</label>
-                <input onChange={(e) => { setSaleDescription(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the description of your new sale' required />
-                <button className={styles.newSaleSubmitButton} type= "submit">Add sale</button>
-            </div>
+            <label className={styles.newLabel}>Sale Name*</label>
+            <input onChange={(e) => { setSaleName(e.target.value); }} className={styles.newInput} type='text' placeholder='Name of your new sale' required />
+            <label className={styles.newLabel}>Payment Method*</label>
+            <PaymentMethodGrid setSalePaymentMethod={setSalePaymentMethod} />
+            <input hidden className={styles.newInput} type='text' placeholder='Payment method' value={salePaymentMethod} required />
+            <label className={styles.newLabel}>Amount of the sale*</label>
+            <input onChange={(e) => { setSaleAmount(parseInt(e.target.value)) }} className={styles.newInput} type='number' placeholder='0' required />
+            <label className={styles.newLabel}>Description*</label>
+            <input onChange={(e) => { setSaleDescription(e.target.value) }} className={styles.newInput} type='text' placeholder='Description of your new sale' required />
+            <button className={styles.newSaleSubmitButton} type="submit">Add sale</button>
         </form>
     )
 }

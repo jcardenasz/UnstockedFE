@@ -2,12 +2,18 @@ import React from 'react';
 import styles from './transactionsSummary.module.css';
 import SummaryCard from '@/components/atoms/summaryCard/SummaryCard';
 
-function TransactionsSummary(): JSX.Element {
+interface TransactionsSummaryProps {
+    balance: number,
+    totalSales: number,
+    totalExpenses: number
+}
+
+function TransactionsSummary({ balance, totalSales, totalExpenses }: TransactionsSummaryProps): JSX.Element {
     return (
         <div className={styles.container}>
-            <SummaryCard title='Balance' value={0} type='balance' />
-            <SummaryCard title='Total Sales' value={0} type='profit' />
-            <SummaryCard title='Total Costs' value={0} type='loss' />
+            <SummaryCard title='Balance' value={balance} type='balance' />
+            <SummaryCard title='Total Sales' value={totalSales} type='profit' />
+            <SummaryCard title='Total Costs' value={totalExpenses} type='loss' />
         </div>
     )
 }

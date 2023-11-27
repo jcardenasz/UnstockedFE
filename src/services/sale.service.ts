@@ -1,5 +1,4 @@
 export async function getSales(): Promise<Response> {
-
     const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/transactions/gSales`, {
         method: 'GET',
         credentials: 'include',
@@ -10,7 +9,7 @@ export async function getSales(): Promise<Response> {
     return await categories.json()
 }
 
-export async function addSale(name: string, description:string, paymentMethod: string, saleAmount: number,stock: number): Promise<Response> {
+export async function addSale(name: string, description: string, paymentMethod: string, saleAmount: number): Promise<Response> {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/transactions/cSale`, {
         method: "POST",
@@ -20,10 +19,9 @@ export async function addSale(name: string, description:string, paymentMethod: s
         },
         body: JSON.stringify({
             name,
-			paymentMethod,
-            stock,
-            saleAmount,
             description,
+            paymentMethod,
+            saleAmount
         }),
     });
 

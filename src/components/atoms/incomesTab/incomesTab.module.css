@@ -1,6 +1,7 @@
 .tableContainer {
     width: 100%;
-    overflow-x: auto;
+    height: 280px;
+    overflow: scroll;
     margin-top: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
@@ -11,6 +12,10 @@
     font-size: 0.9em;
 }
 
+.tableRow{
+    text-align: center;
+}
+
 .table th,
 .table td {
     padding: 12px 15px;
@@ -19,7 +24,6 @@
 .table thead tr {
     background-color: rgb(72, 44, 118);
     color: #ffffff;
-    text-align: left;
 }
 
 .table tbody tr {
