@@ -4,12 +4,13 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import styles from './addExpenseForm.module.css';
 import { addExpense } from '@/services/expense.service';
+import PaymentMethodGrid from '@/components/molecules/paymentMethodGrid/PaymentMethodGrid';
 
 function AddExpenseForm({ setAddExpenseIsOpen }: { setAddExpenseIsOpen: (val: boolean) => void }): JSX.Element {
 
     const [ExpenseName, setExpenseName] = useState('');
     const [ExpenseDescription, setExpenseDescription] = useState('');
-    const [ExpensePaymentMethod, setExpensePaymentMethod] = useState('');
+    const [ExpensePaymentMethod] = useState('');
     const [ExpenseSupplier, setExpenseSupplier] = useState('');
     const [ExpensePrice, setExpensePrice] = useState('');
 
@@ -64,16 +65,21 @@ function AddExpenseForm({ setAddExpenseIsOpen }: { setAddExpenseIsOpen: (val: bo
 
     return (
         <form className={styles.form} onSubmit={handleAddExpenseSubmit} >
-            <label className={styles.newLabel}>Expense Name*</label>
-            <input onChange={(e) => { setExpenseName(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the name of your new Expense' required />
-            <label className={styles.newLabel}>Payment Method*</label>
-            <input onChange={(e) => { setExpensePaymentMethod(e.target.value); }} className={styles.newInput} type='checkbox' placeholder='' required />
-            <label className={styles.newLabel}>*</label>
-            <input onChange={(e) => { setExpensePrice(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
-            <label className={styles.newLabel}>Amount*</label>
-            <input onChange={(e) => { setExpenseSupplier(e.target.value); }} className={styles.newInput} type='text' placeholder='Writte the supplier' required />
-            <label className={styles.newLabel}>Description*</label>
-            <input onChange={(e) => { setExpenseDescription(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the description of your new Expense' required />
+            <div>
+                <label className={styles.newLabel}>Expense Name*</label>
+                <input onChange={(e) => { setExpenseName(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the name of your new Expense' required />
+                <label className={styles.newLabel}>Payment Method*</label>
+            </div>
+            <PaymentMethodGrid />
+            <div>
+                <label className={styles.newLabel}>Amount*</label>
+                <input onChange={(e) => { setExpensePrice(e.target.value); }} className={styles.newInput} type='number' placeholder='0' required />
+                <label className={styles.newLabel}>Supplier*</label>
+                <input onChange={(e) => { setExpenseSupplier(e.target.value); }} className={styles.newInput} type='text' placeholder='Writte the supplier' required />
+                <label className={styles.newLabel}>Description*</label>
+                <input onChange={(e) => { setExpenseDescription(e.target.value); }} className={styles.newInput} type='text' placeholder='Write the description of your new Expense' required />
+            </div>
+            
             <button className={styles.newExpenseSubmitButton}>Add Expense</button>
         </form>
     )

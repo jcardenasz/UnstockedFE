@@ -17,6 +17,8 @@ import AddExpenseForm from '@/components/molecules/addExpenseForm/addExpenseForm
 
 export default function Transactions(): JSX.Element {
 
+    
+
     const [addSaleIsOpen, setAddSaleIsOpen] = React.useState(false);
     const [addExpenseIsOpen, setAddExpenseIsOpen] = React.useState(false);
 

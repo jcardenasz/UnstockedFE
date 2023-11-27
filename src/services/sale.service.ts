@@ -30,3 +30,4 @@ export async function addSale(name: string, description:string, paymentMethod: s
 
     return res;
 }
+
