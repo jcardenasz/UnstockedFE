@@ -36,8 +36,9 @@ function IncomesTab(): JSX.Element {
         }
     }
 
-    void fetchSalesData();
-            void setSales(newSalesList);
+    useEffect(() => {
+        void fetchSalesData();
+        setSales(newSalesList);
     }, []);
 
     return (
@@ -53,11 +54,11 @@ function IncomesTab(): JSX.Element {
                 </thead>
                 <tbody>
                     {data?.map((data: { id: string, name: string, saleAmount: number, paymentMethod:string, date: string }) => (
-                        <tr key={''}>
-                            <td>{data.name}</td>
-                            <td>{data.saleAmount}</td>
-                            <td>{data.paymentMethod}</td>
-                            <td>{data.date}</td>
+                        <tr className="table" key={''}>
+                            <th>{data.name}nom</th>
+                            <th>{data.saleAmount}$</th>
+                            <th>{data.paymentMethod}tk</th>
+                            <th>{data.date}dt</th>
                         </tr>
                     ))}
                 </tbody>
